@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>Tomatoop</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <h1>Tomatoop</h1>
+    <form action="/" method="post">
+
+          <label for="category">Category</label><br>
+          <select name="category" id="category">
+            <% types.forEach((category) => { %>
+              <option type="text" value="<%= category %>" class="form-control"><%= category %></option>
+            <%  }) %>
+          <button type="submit">Create Campaign</button>
+      </form>
+
   </body>
 </html>
