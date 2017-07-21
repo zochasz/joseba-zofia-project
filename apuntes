@@ -1,0 +1,5 @@
+<ul>
+  <% events.forEach((event) => { %>
+    <li><%= event %> </li>
+  <%  }) %>
+</ul>
