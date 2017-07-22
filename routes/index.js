@@ -5,9 +5,13 @@ const Event = require('../models/event');
 const User = require('../models/user');
 
 router.get('/', (req, res, next) => {
-  const events = Event.find({products: "Eggs"});
-  console.log(events);
-  res.render('index', { TYPES, events });
+  Event.find({}, (err, events) => {
+     if (err) {
+       return next(err);
+     }
+     console.log(events);
+     res.render('index', { TYPES, events });
+  });
 });
 
 // router.get('/', (req, res, next) => {
