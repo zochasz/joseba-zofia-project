@@ -70,13 +70,36 @@ passport.use('local-signup', new LocalStrategy(
             if (user) {
                 return next(null, false);
             } else {
-                const { username, email, name, password } = req.body;
+                const { username, email, name, password, isProducer, street, streetNo, zipCode, city, country, description, url, phoneNo } = req.body;
+                const products = [];
+                if (req.body.productType1) { products.push("Fruit & Vegetables") };
+                if (req.body.productType2) { products.push("Eggs") };
+                if (req.body.productType3) { products.push("Milk & Cheese") };
+                if (req.body.productType4) { products.push("Bread, Cereals & Bakery") };
+                if (req.body.productType5) { products.push("Oil & Vinegar") }
+                if (req.body.productType6) { products.push("Beer, Vine & Spirits") };
+                if (req.body.productType7) { products.push("Meat") };
+                if (req.body.productType8) { products.push("Cold Meat") };
+                if (req.body.productType9) { products.push("Jams & Honey") };
+                if (req.body.productType10) { products.push("Appetizers") };
+                if (req.body.productType11) { products.push("Tinned Food") };
+
                 const hashPass = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
                 const newUser = new User({
                   username,
                   email,
                   name,
-                  password: hashPass
+                  password: hashPass,
+                  isProducer,
+                  address: { street, 
+                  streetNo,
+                  zipCode,
+                  city,
+                  country },
+                  description,
+                  url,
+                  phoneNo,
+                  products
                 });
                 newUser.save((err) => {
                     if (err){ next(err); }

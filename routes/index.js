@@ -9,7 +9,6 @@ router.get('/', (req, res, next) => {
      if (err) {
        return next(err);
      }
-     console.log(events);
      res.render('index', { TYPES, events });
   });
 });

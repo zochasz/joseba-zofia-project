@@ -1,13 +1,13 @@
 module.exports = [
   "Fruit & Vegetables",
   "Eggs",
-  "Milk & cheese",
-  "Bread, cearels & bakery",
+  "Milk & Cheese",
+  "Bread, Cereals & Bakery",
   "Oil & Vinegar",
-  "Beer, vine & spirits",
-  "Meet",
-  "Cold meat",
+  "Beer, Vine & Spirits",
+  "Meat",
+  "Cold Meat",
   "Jams & Honey",
   "Appetizers",
-  "Tinned food"
+  "Tinned Food"
 ];
