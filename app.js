@@ -1,31 +1,34 @@
-const express = require('express');
-const path = require('path');
-const favicon = require('serve-favicon');
-const logger = require('morgan');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-const passport = require('passport');
-const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
-const LocalStrategy = require('passport-local').Strategy;
-const bcrypt = require('bcrypt');
-const mongoose = require('mongoose');
+const express           = require('express');
+const path              = require('path');
+const favicon           = require('serve-favicon');
+const logger            = require('morgan');
+const cookieParser      = require('cookie-parser');
+const bodyParser        = require('body-parser');
+const expressLayouts    = require('express-ejs-layouts');
+const passport          = require('passport');
+const session           = require('express-session');
+const MongoStore        = require('connect-mongo')(session);
+const LocalStrategy     = require('passport-local').Strategy;
+const bcrypt            = require('bcrypt');
+const mongoose          = require('mongoose');
 
 mongoose.connect("mongodb://localhost/tomatoop-dev");
 
-const User = require('./models/user');
-const Event = require('./models/event');
+const User              = require('./models/user');
+const Event             = require('./models/event');
 
 //const eventRoutes = require('./routes/event.js');
-const indexRoutes = require('./routes/index.js');
+const indexRoutes       = require('./routes/index.js');
 //const producerRoutes = require('./routes/producer.js');
-const authRoutes = require('./routes/auth.js');
+const authRoutes        = require('./routes/auth.js');
 
 const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.set('layout', 'layouts/main-layout');
+app.use(expressLayouts);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
