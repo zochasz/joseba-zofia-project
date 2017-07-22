@@ -13,15 +13,6 @@ router.get('/', (req, res, next) => {
   });
 });
 
-// router.get('/', (req, res, next) => {
-//   Event
-//     .find({})
-//     .populate('_creator')
-//     .exec( (err, events) => {
-//       console.log(events);
-//       res.render('index', { TYPES });
-//     });
-// });
 
 
 

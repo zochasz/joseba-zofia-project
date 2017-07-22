@@ -59,7 +59,7 @@ body {
   padding: 2.5%;
   background-color: #a12e38;
   color: #f4dfd4;
-  text-transform: uppercase;
+  font-family: 'Josefin Sans', sans-serif;
 }
 a {
   color: #f4dfd4;
@@ -68,11 +68,11 @@ a {
 header {
   border-bottom: 2px solid #f4dfd4;
   margin-bottom: 20px;
+  padding-bottom: 25px;
 }
 header img {
   align-items: center;
   height: 90px;
-  margin-bottom: 25px;
 }
 
 header.container {
@@ -91,19 +91,34 @@ form {
 #radio1, #radio2 {
   margin: 0 10px;
 }
-.btn, .form-control {
-  background-color: #f4dfd4;
-  border-radius: 0;
+.btn-avatar {
+  background-color: #a12e38;
+  border-radius: 50%;
 }
-
+.float-right {
+  float: right;
+}
+.event-box {
+  width: 95%;
+  padding: 10px;
+  margin: 20px auto;
+  border: 2px solid #f4dfd4;
+}
+.event-link {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
 @media (max-width: 768px) {
   body {
     padding: 10px;
     color: #f4dfd4;
   }
+  header {
+    padding-bottom: 10px;
+  }
   header img {
-    height: 25px;
-    margin-bottom: 10px;
+    height: 20px;
   }
   form {
     margin: 10px;
