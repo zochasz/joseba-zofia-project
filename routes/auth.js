@@ -1,6 +1,7 @@
 const express = require('express');
 const passport = require('passport');
 const TYPES = require('../models/product-types');
+const User = require('../models/user');
 const router  = express.Router();
 
 router.get('/signup', (req, res) => {
@@ -24,6 +25,17 @@ router.post('/login', passport.authenticate('local-login', {
 router.post('/logout', (req, res) => {
     req.logout();
     res.redirect('/');
+});
+
+router.get('/profile', (req, res, next) => {
+  User.findById(req.user._id, (err, user) => {
+      if (err) {
+        return next(err);
+      }
+      res.render('auth/profile', {
+        user, TYPES
+      });
+  });
 });
 
 module.exports = router;
