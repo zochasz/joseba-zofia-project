@@ -2,8 +2,15 @@ $( "#toggle-producer" ).change(function() {
     $( "#form-producer" ).toggle();
 });
 
-$(document).ready(function() {
-   $( "#productTypes" ).multiselect();
-   $( "#productTypes" ).multiselect('refresh');
-});
-
+function getGeolocationCoordinates(id) {
+  $.ajax({
+    url: "http://pokeapi.co/api/v2/pokemon/" + id,
+    method: "GET",
+    success: function (response) {
+      console.log(response);
+    },
+    error: function (err) {
+      console.log(err);
+    },
+  })
+}
