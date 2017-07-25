@@ -1,9 +1,18 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const TYPES = require('../models/product-types');
+const Event = require('../models/event');
+const User = require('../models/user');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', (req, res, next) => {
+  const productTypes = req.body.productTypes;
+  if (productTypes===null) {productTypes=""};
+  Event.find({productTypes}, (err, events) => {
+     if (err) {
+       return next(err);
+     }
+     res.render('index', { TYPES, events });
+  });
 });
 
 module.exports = router;
