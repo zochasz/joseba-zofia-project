@@ -14,9 +14,11 @@ const UserSchema  = new Schema({
   address         : {
                     street: String,
                     streetNo: Number,
-                    zip_code: String,
+                    zipCode: String,
                     city: String,
-                    country: String
+                    country: String,
+                    latitude: String,
+                    longitude: String
                     },
   description     : String,
   url             : String,

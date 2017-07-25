@@ -18,10 +18,11 @@ var encryptedPass = bcrypt.hashSync(password, salt);
 //     password: encryptedPass,
 //     name: 'Juan Lopez',
 //     email: 'juan@lopez.com',
+//     isProducer: true,
 //     address: {
 //       street: 'calle Pizarra',
 //       streetNo: 7,
-//       zip_code: '28123',
+//       zipCode: '28123',
 //       city: 'Toledo',
 //       country: 'España'
 //     },
@@ -36,10 +37,11 @@ var encryptedPass = bcrypt.hashSync(password, salt);
 //     password: encryptedPass,
 //     name: 'Pepita Perez',
 //     email: 'pepita@perez.com',
+//     isProducer: true,
 //     address: {
 //       street: 'calle Fosforo',
 //       streetNo: 4,
-//       zip_code: '28345',
+//       zipCode: '28345',
 //       city: 'Avila',
 //       country: 'España'
 //     },
@@ -54,10 +56,11 @@ var encryptedPass = bcrypt.hashSync(password, salt);
 //     password: encryptedPass,
 //     name: 'Andres Gonzalez',
 //     email: 'andres@gonzalez.com',
+//     isProducer: true,
 //     address: {
 //       street: 'calle Hierro',
 //       streetNo: 3,
-//       zip_code: '28853',
+//       zipCode: '28853',
 //       city: 'Hoyo de Manzanares',
 //       country: 'España'
 //     },
@@ -69,36 +72,36 @@ var encryptedPass = bcrypt.hashSync(password, salt);
 // ];
 const events = [
     {
-    _creator      : "596e3e31bb2b3a4034f73cf4",
+    _creator      : "59736abd27e4f744f8eb4670",
     title         : 'Venta de Miel de Romero',
     description   : 'Oferta: tarro de 05L - 3euros, si te llevas 2 - 5euros',
     address       : {
                     street: 'Puerta del Sol',
-                    zip_code: '28001',
+                    zipCode: '28001',
                     city: 'Madrid',
                     country: 'España'
                     },
     products      : [ "Jams & Honey" ]
     },
     {
-    _creator      : "596e3e31bb2b3a4034f73cf3",
+    _creator      : "59736abd27e4f744f8eb4671",
     title         : 'Venta de Huevos de la Colina',
     description   : '6 huevos blancos XL - 3,5euros, 6 huevos morenos XL - 3,2euros',
     address       : {
                     street: 'Puerta de Alcala',
-                    zip_code: '28002',
+                    zipCode: '28002',
                     city: 'Madrid',
                     country: 'España'
                     },
     products      : [ "Eggs" ]
     },
     {
-    _creator      : "596e3e31bb2b3a4034f73cf2",
+    _creator      : "59736abd27e4f744f8eb4672",
     title         : 'Vendo verdirita fresca, fresca de mi huerta',
     description   : 'Tengo tomates rambo, acelga fresca, zanahorias riquisimas, puerros, cebollas, calabacines y ajos',
     address       : {
                     street: 'Plaza de la Paja',
-                    zip_code: '28005',
+                    zipCode: '28005',
                     city: 'Madrid',
                     country: 'España'
                     },
@@ -111,6 +114,7 @@ const events = [
 //     throw err;
 //   }
 //   console.log(user);
+//   mongoose.connection.close();
 // });
 
 Event.create(events, (err, docs)=>{
