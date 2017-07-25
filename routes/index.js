@@ -5,7 +5,9 @@ const Event = require('../models/event');
 const User = require('../models/user');
 
 router.get('/', (req, res, next) => {
-  Event.find({}, (err, events) => {
+  const productTypes = req.body.productTypes;
+  if (productTypes===null) {productTypes=""};
+  Event.find({productTypes}, (err, events) => {
      if (err) {
        return next(err);
      }
@@ -13,8 +15,5 @@ router.get('/', (req, res, next) => {
      res.render('index', { TYPES, events });
   });
 });
-
-
-
 
 module.exports = router;
