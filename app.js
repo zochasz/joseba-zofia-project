@@ -11,7 +11,8 @@ const MongoStore        = require('connect-mongo')(session);
 const LocalStrategy     = require('passport-local').Strategy;
 const bcrypt            = require('bcrypt');
 const mongoose          = require('mongoose');
-require("dotenv").config();
+                          require("dotenv").config();
+
 const googleMapsClient  = require('@google/maps').createClient({
   key: process.env.GOOGLE_APIKEY
 });
@@ -103,8 +104,8 @@ passport.use('local-signup', new LocalStrategy(
                       name,
                       password: hashPass,
                       isProducer,
-                      address: 
-                      { street, 
+                      address:
+                      { street,
                         streetNo,
                         zipCode,
                         city,

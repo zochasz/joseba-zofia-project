@@ -5,17 +5,19 @@ class Filter {
   }
 
   handleResponse(res){
+    console.log("RES=====")
     console.log(res)
   }
 
   handleError(err) {
+    console.log("ERR=====")
     console.log(err)
   }
 
-  filterEvents (my_param) {
+  filterEvents (prod_typ, where_find) {
     $.ajax({
       method: 'GET',
-      url: `http://localhost:3000/search?param_1=${my_param}`,
+      url: `/search?product_types=${prod_typ}&where_find=${where_find}`,
       success: this.handleResponse,
       error: this.handleError
     });

@@ -1,24 +1,27 @@
 
-      <form id="my-form">
-          <select for="productTypes" class="form-control" name="product-types" id="product-types">
+      <form id="my-form" action="/search" method="GET">
+          <select for="productTypes" class="form-control" name="productTypes" id="productTypes">
               <option hidden value="" selected>CHOOSE A PRODUCT TYPE</option>
             <% TYPES.forEach((type) => { %>
               <option type="text" value="<%= type %>"><%= type %> </option>
             <%  }) %>
           </select>
+
           <div class="inputRadio">
-            <input type="radio" name="radioOptions" id="radio1" value="option1"> Producer
-            <input type="radio" name="radioOptions" id="radio2" value="option2"> Calendar
+            <input type="radio" name="radioOptions" id="radio1" value="option1" checked > Calendar
+            <input type="radio" name="radioOptions" id="radio2" value="option2"> Producer
           </div>
+
           <button id="search-button" class="btn btn-default btn-block" type="submit"> SEARCH </button>
         </form>
 
-
-        <% events.forEach((event) => { %>
-          <div class="event-box">
-            <a class="event-link" href="/event/<%= event._id %>">
-              <p> <strong><%= event.title %> </strong></p>
-              <p> Product type: <%= event.products %> </p>
-            </a>
-          </div>
-        <%  }) %>
+        <div class="event-listing">
+          <% events.forEach((event) => { %>
+            <div class="event-box">
+              <a class="event-link" href="/event/<%= event._id %>">
+                <p> <strong><%= event.title %> </strong></p>
+                <p> Product type: <%= event.products %> </p>
+              </a>
+            </div>
+          <%  }) %>
+        </div>
