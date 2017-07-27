@@ -1,13 +1,8 @@
 class Filter {
 
-  constructor (baseUrl) {
-    this.BASE_URL = baseUrl;
-  }
-
-  handleResponse(res){
-    console.log("RES=====")
-    console.log(res)
-  }
+  //handleResponse(res){
+    //this.filteredList = res.events
+  // }
 
   handleError(err) {
     console.log("ERR=====")
@@ -18,8 +13,9 @@ class Filter {
     $.ajax({
       method: 'GET',
       url: `/search?product_types=${prod_typ}&where_find=${where_find}`,
-      success: this.handleResponse,
+      success: handleResponse,
       error: this.handleError
     });
+
   }
 }

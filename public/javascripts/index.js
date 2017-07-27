@@ -12,16 +12,38 @@ $(document).ready( () => {
 
     $ ( ".event-listing" ).empty();
 
-    events.forEach((event) => {
+  })
+})
+
+function handleResponse(res) {
+  drawFilteredEvents(res)
+}
+
+function drawFilteredEvents(list){
+  if (list.events) {
+    list.events.forEach((event) => {
     const showEvents = `
      <div class="event-box">
        <a class="event-link" href="/event/${ event._id }">
          <p> <strong>${ event.title } </strong></p>
-         <p> Product type: ${ event.products } %> </p>
+         <p> Product type: ${ event.products } </p>
        </a>
      </div>
    `
    $(".event-listing").append(showEvents);
-    })
+   })
+ }
+ else {
+   list.users.forEach((user) => {
+   const showEvents = `
+    <div class="event-box">
+      <a class="event-link" href="/event/${ user._id }">
+        <p> <strong>${ user.name } </strong></p>
+        <p> Product type: ${ user.username } </p>
+      </a>
+    </div>
+  `
+  $(".event-listing").append(showEvents);
   })
-})
+ }
+}

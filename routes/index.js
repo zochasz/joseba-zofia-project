@@ -27,16 +27,16 @@ router.get('/search', (req, res, next) => {
          return next(err);
        }
        console.log(events);
-       res.json( events );
+     res.json( { events } );
     });
   }
   else if (where_find === "option2"){
-    User.find({ products: product_types }, (err, events) => {
+    User.find({ products: product_types }, (err, users) => {
        if (err) {
          return next(err);
        }
-       console.log(events);
-       res.json( events );
+       console.log(users);
+       res.json( { users } );
     });
   }
 });
