@@ -38,4 +38,9 @@ router.get('/profile', (req, res, next) => {
   });
 });
 
+router.post('/profile', passport.authenticate('local-profile', {
+  successRedirect : '/',
+  failureRedirect : '/profile'
+}));
+
 module.exports = router;

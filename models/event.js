@@ -13,7 +13,9 @@ const EventSchema = new Schema({
                   streetNo: Number,
                   zip_code: String,
                   city: String,
-                  country: String
+                  country: String,
+                  latitude: Number,
+                  longitude: Number
                   },
   // timestamps    : { createdAt: "created_at", updatedAt: "updated_at" },
   products      : [ { type: String, enum: TYPES, required: true } ],

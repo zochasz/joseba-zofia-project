@@ -60,7 +60,7 @@
           <div class="form-group">
             <label>Product Types</label>
               <% let i = 0; %>
-              <% TYPES.forEach((type) => { %>
+              <% TYPES.forEach((type, i) => { %>
               <% i++ %>
                 <div class="checkbox">
                   <label><input type="checkbox" name="productType<%= i %>" id="productType<%= i %>"><%= type %></label>
