@@ -20,10 +20,16 @@
               <img src="images/avatar.png"> <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
-              <li><a href="#">Sign up</a></li>
-              <li><a href="#">Login</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">Logout</a></li>
+              <% if (!isAuthenticated) {%>
+              <li><a href="/signup">Sign up</a></li>
+              <li><a href="/login">Login</a></li>
+              <li>
+              <% } else { %>
+                <form action="/logout" method="POST">
+                  <a href="#" onclick="$(this).closest('form').submit()">Logout</a>
+                </form>  
+              </li>
+              <% } %>
             </ul>
           </div>
 
