@@ -20,11 +20,13 @@ var encryptedPass = bcrypt.hashSync(password, salt);
 //     email: 'juan@lopez.com',
 //     isProducer: true,
 //     address: {
-//       street: 'calle Pizarra',
-//       streetNo: 7,
-//       zipCode: '28123',
-//       city: 'Toledo',
-//       country: 'España'
+//       street: 'Torrelaguna',
+//       streetNo: '75',
+//       zipCode: '28027',
+//       city: 'Madrid',
+//       country: 'Spain',
+//       latitude: 40.44583910000001,
+//       longitude: -3.6557812
 //     },
 //     description: 'Verduras ecologicas, frescas y de temporada.',
 //     url: 'www.verduras_lopez.com',
@@ -39,11 +41,13 @@ var encryptedPass = bcrypt.hashSync(password, salt);
 //     email: 'pepita@perez.com',
 //     isProducer: true,
 //     address: {
-//       street: 'calle Fosforo',
-//       streetNo: 4,
-//       zipCode: '28345',
-//       city: 'Avila',
-//       country: 'España'
+//       street: 'Amparo',
+//       streetNo: '59',
+//       zipCode: '28012',
+//       city: 'Madrid',
+//       country: 'Spain',
+//       latitude: 40.4088421,
+//       longitude: -3.7023373
 //     },
 //     description: 'Huevos de gallinas criadas en libertad.',
 //     url: 'www.granjalacolina.com',
@@ -58,11 +62,13 @@ var encryptedPass = bcrypt.hashSync(password, salt);
 //     email: 'andres@gonzalez.com',
 //     isProducer: true,
 //     address: {
-//       street: 'calle Hierro',
-//       streetNo: 3,
-//       zipCode: '28853',
-//       city: 'Hoyo de Manzanares',
-//       country: 'España'
+//       street: 'Orense',
+//       streetNo: 5,
+//       zipCode: '28020',
+//       city: 'Madrid',
+//       country: 'Spain',
+//       latitude: 40.4474153,
+//       longitude: -3.6956848
 //     },
 //     description: 'Miel de romero.',
 //     url: 'www.colmena-romero.com',
@@ -76,10 +82,13 @@ const events = [
     title         : 'Venta de Miel de Romero',
     description   : 'Oferta: tarro de 05L - 3euros, si te llevas 2 - 5euros',
     address       : {
-                    street: 'Puerta del Sol',
-                    zipCode: '28001',
+                    street: 'Torrelaguna',
+                    streetNo: '75',
+                    zipCode: '28027',
                     city: 'Madrid',
-                    country: 'España'
+                    country: 'Spain',
+                    latitude: 40.44583910000001,
+                    longitude: -3.6557812
                     },
     products      : [ "Jams & Honey" ]
     },
@@ -88,10 +97,13 @@ const events = [
     title         : 'Venta de Huevos de la Colina',
     description   : '6 huevos blancos XL - 3,5euros, 6 huevos morenos XL - 3,2euros',
     address       : {
-                    street: 'Puerta de Alcala',
-                    zipCode: '28002',
+                    street: 'Amparo',
+                    streetNo: '59',
+                    zipCode: '28012',
                     city: 'Madrid',
-                    country: 'España'
+                    country: 'Spain',
+                    latitude: 40.4088421,
+                    longitude: -3.7023373
                     },
     products      : [ "Eggs" ]
     },
@@ -100,10 +112,13 @@ const events = [
     title         : 'Vendo verdirita fresca, fresca de mi huerta',
     description   : 'Tengo tomates rambo, acelga fresca, zanahorias riquisimas, puerros, cebollas, calabacines y ajos',
     address       : {
-                    street: 'Plaza de la Paja',
-                    zipCode: '28005',
+                    street: 'Orense',
+                    streetNo: '5',
+                    zipCode: '28020',
                     city: 'Madrid',
-                    country: 'España'
+                    country: 'Spain',
+                    latitude: 40.4474153,
+                    longitude: -3.6956848
                     },
     products      : [ "Fruit & Vegetables" ]
   }];

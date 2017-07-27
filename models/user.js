@@ -17,8 +17,8 @@ const UserSchema  = new Schema({
                     zipCode: String,
                     city: String,
                     country: String,
-                    latitude: String,
-                    longitude: String
+                    latitude: Number,
+                    longitude: Number
                     },
   description     : String,
   url             : String,
