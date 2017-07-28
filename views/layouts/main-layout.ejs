@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link href="/bower_components/bootstrap-toggle/css/bootstrap-toggle.min.css" rel="stylesheet">
     <script src="/bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript"> var myEvents = <%- JSON.stringify(events) %> </script>
+
   </head>
   <body>
       <header class="container">
@@ -20,10 +22,10 @@
               <img src="images/avatar.png"> <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
-              <li><a href="#">Sign up</a></li>
-              <li><a href="#">Login</a></li>
+              <li><a href="/auth/signup">Sign up</a></li>
+              <li><a href="/auth/login">Login</a></li>
               <li role="separator" class="divider"></li>
-              <li><a href="#">Logout</a></li>
+              <li><a href="/logout">Logout</a></li>
             </ul>
           </div>
 
@@ -37,5 +39,9 @@
       <script src="/bower_components/bootstrap-toggle/js/bootstrap-toggle.min.js" type="text/javascript"></script>
       <script src="/javascripts/search.js" type="text/javascript"></script>
       <script src="/javascripts/index.js" type="text/javascript"></script>
+
+      <script src="https://maps.googleapis.com/maps/api/js?key="></script>
+      <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+      <script type="text/javascript" src="/javascripts/main.js"></script>
     </body>
 </html>

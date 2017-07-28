@@ -31,7 +31,7 @@ var encryptedPass = bcrypt.hashSync(password, salt);
 //     description: 'Verduras ecologicas, frescas y de temporada.',
 //     url: 'www.verduras_lopez.com',
 //     phoneNo: '666 44 55 66',
-//     products: [ "Fruit & Vegetables" ],
+//     products: [ "Fruit and Vegetables" ],
 //   },
 //   {
 //     // _id: "00000000002",
@@ -73,12 +73,12 @@ var encryptedPass = bcrypt.hashSync(password, salt);
 //     description: 'Miel de romero.',
 //     url: 'www.colmena-romero.com',
 //     phoneNo: '666 32 43 54',
-//     products: [ "Jams & Honey" ],
+//     products: [ "Jams and Honey" ],
 //   }
 // ];
 const events = [
     {
-    _creator      : "59736abd27e4f744f8eb4670",
+    _creator      : "597a2dc6d83cc95d47eaf231",
     title         : 'Venta de Miel de Romero',
     description   : 'Oferta: tarro de 05L - 3euros, si te llevas 2 - 5euros',
     address       : {
@@ -90,10 +90,10 @@ const events = [
                     latitude: 40.44583910000001,
                     longitude: -3.6557812
                     },
-    products      : [ "Jams & Honey" ]
+    products      : [ "Jams and Honey" ]
     },
     {
-    _creator      : "59736abd27e4f744f8eb4671",
+    _creator      : "597a2dc6d83cc95d47eaf230",
     title         : 'Venta de Huevos de la Colina',
     description   : '6 huevos blancos XL - 3,5euros, 6 huevos morenos XL - 3,2euros',
     address       : {
@@ -108,7 +108,7 @@ const events = [
     products      : [ "Eggs" ]
     },
     {
-    _creator      : "59736abd27e4f744f8eb4672",
+    _creator      : "597a2dc6d83cc95d47eaf22f",
     title         : 'Vendo verdirita fresca, fresca de mi huerta',
     description   : 'Tengo tomates rambo, acelga fresca, zanahorias riquisimas, puerros, cebollas, calabacines y ajos',
     address       : {
@@ -120,7 +120,7 @@ const events = [
                     latitude: 40.4474153,
                     longitude: -3.6956848
                     },
-    products      : [ "Fruit & Vegetables" ]
+    products      : [ "Fruit and Vegetables" ]
   }];
 
 

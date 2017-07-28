@@ -15,13 +15,26 @@
           <button id="search-button" class="btn btn-default btn-block" type="submit"> SEARCH </button>
         </form>
 
-        <div class="event-listing">
-          <% events.forEach((event) => { %>
-            <div class="event-box">
-              <a class="event-link" href="/event/<%= event._id %>">
-                <p> <strong><%= event.title %> </strong></p>
-                <p> Product type: <%= event.products %> </p>
-              </a>
-            </div>
-          <%  }) %>
+        <div class="form-group" >
+          <label>List or maps?</label>
+          <div class="checkbox">
+            <input type="checkbox" data-toggle="toggle" name="listOrMap" id="toggle-event" data-on="List" data-off="Map">
+          </div>
+        </div>
+
+        <div id="form-list">
+          <div class="event-listing">
+            <% events.forEach((event) => { %>
+              <div class="event-box">
+                <a class="event-link" href="/event/<%= event._id %>">
+                  <p> <strong><%= event.title %> </strong></p>
+                  <p> Product type: <%= event.products %> </p>
+                </a>
+              </div>
+            <%  }) %>
+          </div>
+        </div>
+
+        <div id="form-maps" style="display:none" >
+            <div id="map" ></div>
         </div>
