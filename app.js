@@ -333,6 +333,14 @@ passport.use('local-login', new LocalStrategy((username, password, next) => {
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated();
+  if (res.locals.isAuthenticated) {
+    res.locals.username = req.user.username;
+  }
+  next();
+});
+
 app.use('/', authRoutes);
 app.use('/', indexRoutes);
 //app.use('/event', eventRoutes);

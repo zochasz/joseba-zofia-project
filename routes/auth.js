@@ -2,27 +2,28 @@ const express = require('express');
 const passport = require('passport');
 const TYPES = require('../models/product-types');
 const User = require('../models/user');
+const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 const router  = express.Router();
 
-router.get('/signup', (req, res) => {
+router.get('/signup', ensureLoggedOut(), (req, res) => {
     res.render('auth/signup', { TYPES });
 });
 
-router.post('/signup', passport.authenticate('local-signup', {
+router.post('/signup', ensureLoggedOut(), passport.authenticate('local-signup', {
   successRedirect : '/',
   failureRedirect : '/signup'
 }));
 
-router.get('/login', (req, res) => {
+router.get('/login', ensureLoggedOut(), (req, res) => {
     res.render('auth/login');
 });
 
-router.post('/login', passport.authenticate('local-login', {
+router.post('/login', ensureLoggedOut(), passport.authenticate('local-login', {
   successRedirect : '/',
   failureRedirect : '/login'
 }));
 
-router.post('/logout', (req, res) => {
+router.post('/logout', ensureLoggedIn('/'), (req, res) => {
     req.logout();
     res.redirect('/');
 });
