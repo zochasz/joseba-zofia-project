@@ -14,7 +14,7 @@ $(document).ready(function(){
 
   // Create and Initialize Map
   const map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 30,
+    zoom: 11,
     center: sol
   });
 
