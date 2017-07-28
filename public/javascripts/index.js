@@ -17,6 +17,7 @@ $(document).ready( () => {
 
 function handleResponse(res) {
   drawFilteredEvents(res)
+  drawMap(res)
 }
 
 function drawFilteredEvents(list){
@@ -37,7 +38,7 @@ function drawFilteredEvents(list){
    list.users.forEach((user) => {
    const showEvents = `
     <div class="event-box">
-      <a class="event-link" href="/event/${ user._id }">
+      <a class="event-link" href="/producer/${ user._id }">
         <p> <strong>${ user.name } </strong></p>
         <p> Product type: ${ user.username } </p>
       </a>
@@ -46,4 +47,53 @@ function drawFilteredEvents(list){
   $(".event-listing").append(showEvents);
   })
  }
+}
+
+function drawMap(list) {
+  if (list.events) {
+    // Create and Initialize Map
+    const map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 11,
+      center: {
+              lat: 40.417080,
+              lng: -3.703612
+              }
+    });
+
+    // Add restaurant markers to map
+    let markers = [];
+    list.events.forEach(function(event){
+      let title = event.title;
+      let position = {
+        lat: event.address.latitude,
+        lng: event.address.longitude
+      };
+
+      var pin = new google.maps.Marker({ position, map, title  });
+      markers.push(pin)
+    });
+  }
+  else {
+    // Create and Initialize Map
+    const map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 11,
+      center: {
+              lat: 40.417080,
+              lng: -3.703612
+              }
+    });
+
+    // Add restaurant markers to map
+    let markers = [];
+    list.users.forEach(function(event){
+      let title = event.title;
+      let position = {
+        lat: event.address.latitude,
+        lng: event.address.longitude
+      };
+
+      var pin = new google.maps.Marker({ position, map, title  });
+      markers.push(pin)
+    });
+  }
 }

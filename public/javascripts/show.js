@@ -1,10 +1,3 @@
-$( "#toggle-event" ).change(function() {
-
-    $( "#form-list" ).toggle();
-    $( "#form-maps" ).toggle();
-
-});
-
 $(document).ready(function(){
 
   // Create and Initialize Map
@@ -18,16 +11,15 @@ $(document).ready(function(){
 
   // Add restaurant markers to map
   let markers = [];
-  console.log(myEvents);
-  myEvents.forEach(function(event){
-    let title = event.title;
+  console.log(myEvent);
+
+    let title = myEvent.title;
     let position = {
-      lat: event.address.latitude,
-      lng: event.address.longitude
+      lat: myEvent.address.latitude,
+      lng: myEvent.address.longitude
     };
 
     console.log(position);
     var pin = new google.maps.Marker({ position, map, title  });
     markers.push(pin)
-  });
 });

@@ -22,9 +22,9 @@ mongoose.connect("mongodb://localhost/tomatoop-dev");
 const User = require('./models/user');
 const Event = require('./models/event');
 
-//const eventRoutes = require('./routes/event.js');
+const eventRoutes = require('./routes/event.js');
 const indexRoutes = require('./routes/index.js');
-//const producerRoutes = require('./routes/producer.js');
+const producerRoutes = require('./routes/producer.js');
 const authRoutes = require('./routes/auth.js');
 
 const app = express();
@@ -343,8 +343,8 @@ app.use((req, res, next) => {
 
 app.use('/', authRoutes);
 app.use('/', indexRoutes);
-//app.use('/event', eventRoutes);
-//app.use('/producer', producerRoutes);
+app.use('/event', eventRoutes);
+app.use('/producer', producerRoutes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

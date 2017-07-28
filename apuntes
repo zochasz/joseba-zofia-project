@@ -12,3 +12,10 @@
       <li><a href="#">Logout</a></li>
     </ul>
 </div>
+
+<div class="input-group date" data-provide="datepicker">
+  <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+</div>
+$('#sandbox-container .input-group.date').datepicker({
+    format: "dd/mm/yyyy"
+});
