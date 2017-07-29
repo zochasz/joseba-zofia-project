@@ -104,22 +104,22 @@ passport.use('local-signup', new LocalStrategy({
           if (isProducer) {
             let products = [];
             if (req.body.productType1) {
-              products.push("Fruit & Vegetables")
+              products.push("Fruit and Vegetables")
             };
             if (req.body.productType2) {
               products.push("Eggs")
             };
             if (req.body.productType3) {
-              products.push("Milk & Cheese")
+              products.push("Milk and Cheese")
             };
             if (req.body.productType4) {
-              products.push("Bread, Cereals & Bakery")
+              products.push("Bread, Cereals and Bakery")
             };
             if (req.body.productType5) {
-              products.push("Oil & Vinegar")
+              products.push("Oil and Vinegar")
             }
             if (req.body.productType6) {
-              products.push("Beer, Vine & Spirits")
+              products.push("Beer, Vine and Spirits")
             };
             if (req.body.productType7) {
               products.push("Meat")
@@ -128,7 +128,7 @@ passport.use('local-signup', new LocalStrategy({
               products.push("Cold Meat")
             };
             if (req.body.productType9) {
-              products.push("Jams & Honey")
+              products.push("Jams and Honey")
             };
             if (req.body.productType10) {
               products.push("Appetizers")
@@ -337,7 +337,11 @@ app.use((req, res, next) => {
   res.locals.isAuthenticated = req.isAuthenticated();
   if (res.locals.isAuthenticated) {
     res.locals.username = req.user.username;
+    // if (res.locals.isProducer) {
+
+    // }
   }
+
   next();
 });
 
