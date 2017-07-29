@@ -32,6 +32,8 @@ const UserSchema  = new Schema({
                       timestamps: { createdAt: "created_at", updatedAt: "updated_at" },
                       text: String
                     } ]
+  },
+  { timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
 });
 
 const User = mongoose.model("User", UserSchema);

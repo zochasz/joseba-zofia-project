@@ -13,7 +13,6 @@ var encryptedPass = bcrypt.hashSync(password, salt);
 
 // const producers = [
 //   {
-//     // _id: "00000000001",
 //     username: 'Verduras Lopez',
 //     password: encryptedPass,
 //     name: 'Juan Lopez',
@@ -34,7 +33,6 @@ var encryptedPass = bcrypt.hashSync(password, salt);
 //     products: [ "Fruit and Vegetables" ],
 //   },
 //   {
-//     // _id: "00000000002",
 //     username: 'Granja La Colina',
 //     password: encryptedPass,
 //     name: 'Pepita Perez',
@@ -55,7 +53,6 @@ var encryptedPass = bcrypt.hashSync(password, salt);
 //     products: [ "Eggs" ]
 //   },
 //   {
-//     // _id: "00000000003",
 //     username: 'Colmena Romero',
 //     password: encryptedPass,
 //     name: 'Andres Gonzalez',
@@ -78,7 +75,7 @@ var encryptedPass = bcrypt.hashSync(password, salt);
 // ];
 const events = [
     {
-    _creator      : "597a2dc6d83cc95d47eaf231",
+    _creator      : "597c4d27bcca6397a031e6b9",
     title         : 'Venta de Miel de Romero',
     description   : 'Oferta: tarro de 05L - 3euros, si te llevas 2 - 5euros',
     address       : {
@@ -89,11 +86,12 @@ const events = [
                     country: 'Spain',
                     latitude: 40.44583910000001,
                     longitude: -3.6557812
-                    },
+                  },
+    datetime      : new Date("2017-09-05T12:30:00.000"),
     products      : [ "Jams and Honey" ]
     },
     {
-    _creator      : "597a2dc6d83cc95d47eaf230",
+    _creator      : "597c4d27bcca6397a031e6ba",
     title         : 'Venta de Huevos de la Colina',
     description   : '6 huevos blancos XL - 3,5euros, 6 huevos morenos XL - 3,2euros',
     address       : {
@@ -104,11 +102,12 @@ const events = [
                     country: 'Spain',
                     latitude: 40.4088421,
                     longitude: -3.7023373
-                    },
+                  },
+    datetime      : new Date("2017-09-07T11:30:00.000"),
     products      : [ "Eggs" ]
     },
     {
-    _creator      : "597a2dc6d83cc95d47eaf22f",
+    _creator      : "597c4d27bcca6397a031e6bb",
     title         : 'Vendo verdirita fresca, fresca de mi huerta',
     description   : 'Tengo tomates rambo, acelga fresca, zanahorias riquisimas, puerros, cebollas, calabacines y ajos',
     address       : {
@@ -119,7 +118,8 @@ const events = [
                     country: 'Spain',
                     latitude: 40.4474153,
                     longitude: -3.6956848
-                    },
+                  },
+    datetime      : new Date("2017-09-08T20:30:00.000"),
     products      : [ "Fruit and Vegetables" ]
   }];
 

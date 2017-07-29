@@ -17,8 +17,8 @@ const EventSchema = new Schema({
                   latitude: Number,
                   longitude: Number
                   },
-  // timestamps    : { createdAt: "created_at", updatedAt: "updated_at" },
   products      : [ { type: String, enum: TYPES, required: true } ],
+  datetime      : { type: Date, default: Date.now },
   comments      : [ {
                   type: Schema.Types.ObjectId,
                   ref: 'User',
@@ -26,7 +26,9 @@ const EventSchema = new Schema({
                   text: String
                   } ],
   viewsCount    : { type: Number, default: 0 },
-  attendantsCount  : { type: Number, default: 0 },
+  attendantsCount  : { type: Number, default: 0 }
+},
+{ timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
 });
 
 
