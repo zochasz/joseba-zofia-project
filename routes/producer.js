@@ -16,4 +16,17 @@ router.get('/:id', (req, res, next) => {
   });
 });
 
+router.post("/:id/favorites", (req, res, next) => {
+
+  const producerId = req.params.id;
+  const userId = req.user._id;
+
+  User.findById(userId, (err, user) => {
+      if (err) { return next (err); }
+      user._favourites.push(producerId);
+      user.save( res.redirect('/'));
+
+    });
+  });
+
 module.exports = router;

@@ -23,3 +23,8 @@ $(document).ready(function(){
     var pin = new google.maps.Marker({ position, map, title  });
     markers.push(pin)
 });
+
+// $( "#favorite-button" ).click(function() {
+//   console.log("favorite")
+//
+// });
