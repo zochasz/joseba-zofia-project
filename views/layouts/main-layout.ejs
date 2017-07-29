@@ -20,12 +20,14 @@
             <button type="button" class="btn btn-default dropdown-toggle btn-avatar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img src="/images/avatar.png"> <span class="caret"></span>
             </button>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu dropdown-menu-right">
               <% if (!isAuthenticated) {%>
               <li><a href="/signup">Sign up</a></li>
               <li><a href="/login">Login</a></li>
               <li>
               <% } else { %>
+                <li><a href='/event/calendar'>Your calendar</a></li>
+                <li><a href='/producer/favourites'>Your favourite producers</a></li>
                 <li><a href="/profile">Update your info</a></li>
                 <form action="/logout" method="POST">
                   <a href="#" onclick="$(this).closest('form').submit()">Logout</a>

@@ -1,0 +1,14 @@
+
+<div class="event-listing">
+  <% events.forEach((event) => { %>
+    <div class="event-box">
+      <a class="event-link" href="/event/<%= event._id %>">
+        <p> <strong><%= event.title %> </strong></p>
+        <p> Product type: <%= event.products %> </p>
+        <form id="delete-calendar-button" action="/event/<%=event.id%>/delete" method="POST">
+          <button type="submit" class="btn btn-default btn-block"> Delete </button>
+        </form>
+      </a>
+    </div>
+  <%  }) %>
+</div>

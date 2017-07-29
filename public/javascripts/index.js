@@ -40,7 +40,7 @@ function drawFilteredEvents(list){
     <div class="event-box">
       <a class="event-link" href="/producer/${ user._id }">
         <p> <strong>${ user.name } </strong></p>
-        <p> Product type: ${ user.username } </p>
+        <p> Product type: ${ user.products } </p>
       </a>
     </div>
   `

@@ -1,0 +1,13 @@
+<div class="favorite-listing">
+  <% users.forEach((user) => { %>
+    <div class="event-box">
+      <a class="event-link" href="/producer/<%= user._id %>">
+        <p> <strong><%= user.name %> </strong></p>
+        <p> Product type: <%= user.products %> </p>
+        <form id="delete-favorite-button" action="/producer/<%=user.id%>/delete" method="POST">
+          <button type="submit" class="btn btn-default btn-block"> Delete </button>
+        </form>
+      </a>
+    </div>
+  <%  }) %>
+</div>
