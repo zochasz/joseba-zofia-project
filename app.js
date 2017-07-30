@@ -194,120 +194,6 @@ passport.use('local-signup', new LocalStrategy({
     });
 }));
 
-passport.use('local-profile', new LocalStrategy({
-    passReqToCallback: true
-  },
-  (req, username, password, next) => {
-    process.nextTick(() => {
-      const {
-        username,
-        email,
-        name,
-        password,
-        isProducer,
-        street,
-        streetNo,
-        zipCode,
-        city,
-        country,
-        description,
-        url,
-        phoneNo
-      } = req.body;
-      const hashPass = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-
-      if (isProducer) {
-        let products = [];
-        if (req.body.productType1) {
-          products.push("Fruit & Vegetables")
-        };
-        if (req.body.productType2) {
-          products.push("Eggs")
-        };
-        if (req.body.productType3) {
-          products.push("Milk & Cheese")
-        };
-        if (req.body.productType4) {
-          products.push("Bread, Cereals & Bakery")
-        };
-        if (req.body.productType5) {
-          products.push("Oil & Vinegar")
-        }
-        if (req.body.productType6) {
-          products.push("Beer, Vine & Spirits")
-        };
-        if (req.body.productType7) {
-          products.push("Meat")
-        };
-        if (req.body.productType8) {
-          products.push("Cold Meat")
-        };
-        if (req.body.productType9) {
-          products.push("Jams & Honey")
-        };
-        if (req.body.productType10) {
-          products.push("Appetizers")
-        };
-        if (req.body.productType11) {
-          products.push("Tinned Food")
-        };
-
-        const calculatedAddress = street + " " + streetNo + " " + zipCode + " " + city + " " + country;
-
-        googleMapsClient.geocode({
-          address: calculatedAddress
-        }, function (err, res) {
-          if (!err) {
-            const latitude = res.json.results[0].geometry.location.lat;
-            const longitude = res.json.results[0].geometry.location.lng;
-
-            const updatedUser = new User({
-              username,
-              email,
-              name,
-              password: hashPass,
-              isProducer,
-              address: {
-                street,
-                streetNo,
-                zipCode,
-                city,
-                country,
-                latitude,
-                longitude
-              },
-              description,
-              url,
-              phoneNo,
-              products
-            });
-            User.findByIdAndUpdate(req.user._id, updatedUser, (err, drone) => {
-              if (err) {
-                next(err);
-              }
-              return next(null, updatedUser);
-            });
-          }
-        });
-      } else {
-        const updatedUser = new User({
-          username,
-          email,
-          name,
-          password: hashPass,
-          isProducer
-        });
-        User.findByIdAndUpdate(req.user._id, updatedUser, (err, drone) => {
-          if (err) {
-            next(err);
-          }
-          return next(null, updatedUser);
-        });
-      }
-    });
-}));
-
-
 passport.use('local-login', new LocalStrategy((username, password, next) => {
   User.findOne({
     username
@@ -337,11 +223,8 @@ app.use((req, res, next) => {
   res.locals.isAuthenticated = req.isAuthenticated();
   if (res.locals.isAuthenticated) {
     res.locals.username = req.user.username;
-    // if (res.locals.isProducer) {
-
-    // }
+    res.locals.isProducer = req.user.isProducer;
   }
-
   next();
 });
 

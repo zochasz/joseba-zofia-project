@@ -8,6 +8,7 @@ const EventSchema = new Schema({
   _creator      : { type: Schema.Types.ObjectId, ref: 'User', required: true },
   title         : { type: String, required: true },
   description   : { type: String, required: true },
+  datetime      : { type: Date, default: Date.now },
   address       : {
                   street: String,
                   streetNo: Number,
@@ -18,7 +19,6 @@ const EventSchema = new Schema({
                   longitude: Number
                   },
   products      : [ { type: String, enum: TYPES, required: true } ],
-  datetime      : { type: Date, default: Date.now },
   comments      : [ {
                   type: Schema.Types.ObjectId,
                   ref: 'User',

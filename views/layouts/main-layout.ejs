@@ -6,11 +6,13 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
-    <link href="/bower_components/bootstrap-toggle/css/bootstrap-toggle.min.css" rel="stylesheet">
-    <script src="/bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
-    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="/bower_components/bootstrap-toggle/js/bootstrap-toggle.min.js" type="text/javascript"></script>
-
+    <link rel="stylesheet" href="/bower_components/bootstrap-toggle/css/bootstrap-toggle.min.css">
+    <link rel="stylesheet" href="/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+    <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/bower_components/bootstrap-toggle/js/bootstrap-toggle.min.js"></script>
+    <script type="text/javascript" src="/bower_components/moment/min/moment.min.js"></script>
+    <script type="text/javascript" src="/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
   </head>
   <body>
       <header class="container">
@@ -24,17 +26,22 @@
             </button>
             <ul class="dropdown-menu dropdown-menu-right">
               <% if (!isAuthenticated) {%>
-              <li><a href="/signup">Sign up</a></li>
+              <li><a href="/signup">Sign Up</a></li>
               <li><a href="/login">Login</a></li>
               <li>
-              <% } else { %>
-                <li><a href='/event/calendar'>Your calendar</a></li>
-                <li><a href='/producer/favourites'>Your favourite producers</a></li>
-                <li><a href="/profile">Update your info</a></li>
-                <form action="/logout" method="POST">
+              <% } else if (isAuthenticated && isProducer) { %>
+                <li><a href='/event/new'>Create Event</a></li>
+                <li><a href='#'>Your Created Events</a></li>
+              <% } %>
+              <% if (isAuthenticated) { %>
+                <li><a href='/event/calendar'>Your Calendar</a></li>
+                <li><a href='/producer/favourites'>Your Favourite Producers</a></li>
+                <li><a href="/profile">Your Profile</a></li>
+                <li>
+                 <form action="/logout" method="POST">
                   <a href="#" onclick="$(this).closest('form').submit()">Logout</a>
                 </form>
-              </li>
+                </li>
               <% } %>
             </ul>
           </div>

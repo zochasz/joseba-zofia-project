@@ -1,8 +1,103 @@
 const express = require('express');
 const router = express.Router();
 const TYPES = require('../models/product-types');
+const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 const Event = require('../models/event');
 const User = require('../models/user');
+require("dotenv").config();
+const googleMapsClient = require('@google/maps').createClient({
+  key: process.env.GOOGLE_APIKEY
+});
+
+router.get('/new', ensureLoggedIn('/'), (req, res, next) => {
+    res.render('event/new', { TYPES });
+});
+
+router.post('/new', ensureLoggedIn('/'), (req, res, next) => {
+    const _creator = req.user._id;
+    const {
+        title,
+        description,
+        datetimepicker,
+        street,
+        streetNo,
+        zipCode,
+        city,
+        country
+      } = req.body;
+    const datetime = new Date(datetimepicker.substring(0,16).replace(" ","T"));
+    
+    let products = [];
+    if (req.body.productType1) {
+      products.push("Fruit and Vegetables")
+    };
+    if (req.body.productType2) {
+      products.push("Eggs")
+    };
+    if (req.body.productType3) {
+      products.push("Milk and Cheese")
+    };
+    if (req.body.productType4) {
+      products.push("Bread, Cereals and Bakery")
+    };
+    if (req.body.productType5) {
+      products.push("Oil and Vinegar")
+    }
+    if (req.body.productType6) {
+      products.push("Beer, Vine and Spirits")
+    };
+    if (req.body.productType7) {
+      products.push("Meat")
+    };
+    if (req.body.productType8) {
+      products.push("Cold Meat")
+    };
+    if (req.body.productType9) {
+      products.push("Jams and Honey")
+    };
+    if (req.body.productType10) {
+      products.push("Appetizers")
+    };
+    if (req.body.productType11) {
+      products.push("Tinned Food")
+    };
+
+    const calculatedAddress = street + " " + streetNo + " " + zipCode + " " + city + " " + country;
+
+    googleMapsClient.geocode({
+      address: calculatedAddress
+    }, function (err, response) {
+      if (!err) {
+        const latitude = response.json.results[0].geometry.location.lat;
+        const longitude = response.json.results[0].geometry.location.lng;
+
+        const newEvent = new Event({
+           _creator,
+           title,
+           description,
+           datetime,
+           address: {
+             street,
+             streetNo,
+             zipCode,
+             city,
+             country,
+             latitude,
+             longitude
+           },
+           products
+        });
+        newEvent.save((err) => {
+          if (err) {
+            console.log(err);
+            next(err);
+          } else {
+            return res.redirect('/');
+          }
+        });
+      }
+    });
+});
 
 router.get('/calendar', (req, res, next) => {
 
