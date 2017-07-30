@@ -31,7 +31,7 @@
               <li>
               <% } else if (isAuthenticated && isProducer) { %>
                 <li><a href='/event/new'>Create Event</a></li>
-                <li><a href='#'>Your Created Events</a></li>
+                <li><a href='/event/createdEvents'>Your Created Events</a></li>
               <% } %>
               <% if (isAuthenticated) { %>
                 <li><a href='/event/calendar'>Your Calendar</a></li>

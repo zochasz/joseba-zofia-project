@@ -99,6 +99,16 @@ router.post('/new', ensureLoggedIn('/'), (req, res, next) => {
     });
 });
 
+router.get('/createdEvents', (req, res, next) => {
+ 
+  Event.find({ _creator: req.user._id }, (err, events) => {
+        if (err) {
+          return next(err);
+        }
+        res.render('event/producerAgenda', { events: events });
+  });
+});
+
 router.get('/calendar', (req, res, next) => {
 
   User.findById(req.user._id).populate('_events').exec((err, user) => {
