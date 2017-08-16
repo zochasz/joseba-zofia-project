@@ -25,7 +25,10 @@ const UserSchema  = new Schema({
   phoneNo         : String,
   imgurl          : String,
   products        : [ { type: String, enum: TYPES, required: true } ],
-  rate            : Number,
+  rate            : [ {
+                    _id: { type: Schema.Types.ObjectId, ref: 'User' },
+                    stars: Number
+                  } ],
   comments        : [ {
                       type: Schema.Types.ObjectId,
                       ref: 'User',

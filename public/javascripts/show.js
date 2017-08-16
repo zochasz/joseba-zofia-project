@@ -9,9 +9,8 @@ $(document).ready(function(){
             }
   });
 
-  // Add restaurant markers to map
+  // Add event/producer markers to map
   let markers = [];
-  console.log(myEvent);
 
     let title = myEvent.title;
     let position = {
@@ -19,10 +18,25 @@ $(document).ready(function(){
       lng: myEvent.address.longitude
     };
 
-    console.log(position);
     var pin = new google.maps.Marker({ position, map, title  });
     markers.push(pin)
+
+    // Rate
+    const addRating = new Rating()
+    $('#input-id').on('rating.change', function(event, value, caption) {
+      console.log(value);
+      console.log(caption);
+      e.preventDefault();
+      const stars = value;
+      console.log(stars);
+      addRating.ratingEvent(stars);
+    });
 });
+
+$('#input-id').on('rating.clear', function(event) {
+    console.log("rating.clear");
+});
+
 
 // $( "#favorite-button" ).click(function() {
 //   console.log("favorite")

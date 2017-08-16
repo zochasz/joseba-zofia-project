@@ -39,21 +39,37 @@ router.post("/:id/favourites", (req, res, next) => {
       user.save( res.redirect('/producer/favourites'));
 
     });
-  });
-  router.post("/:id/delete", (req, res, next) => {
+});
 
-    const producerId = req.params.id;
-    const userId = req.user._id;
+router.post("/:id/rating", (req, res, next) => {
 
-    User.findById(userId, (err, user) => {
-        if (err) { return next (err); }
-        var index = user._favourites.indexOf(producerId);
-        console.log(index);
-        if (index > -1) {
-            user._favourites.splice(index, 1);
-        }
-        user.save( res.redirect('/producer/favourites'));
+  const producerId = req.params.id;
+  const userId = req.user._id;
+  const stars = req.query.stars;
+  const rate = { _id: userId, stars: stars }
 
-      });
-  });
+  User.findById(producerId, (err, user) => {
+      if (err) { return next (err); }
+      user.rate.push(rate);
+      user.save( res.redirect('/producer/show'));
+
+    });
+});
+
+router.post("/:id/delete", (req, res, next) => {
+
+  const producerId = req.params.id;
+  const userId = req.user._id;
+
+  User.findById(userId, (err, user) => {
+    if (err) { return next (err); }
+    var index = user._favourites.indexOf(producerId);
+    if (index > -1) {
+        user._favourites.splice(index, 1);
+    }
+    user.save( res.redirect('/producer/favourites'));
+
+    });
+});
+
 module.exports = router;

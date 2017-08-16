@@ -1,14 +1,14 @@
-class Filter {
+class Rating {
 
   handleError(err) {
     console.log("ERR=====")
     console.log(err)
   }
 
-  filterEvents (prod_typ, where_find) {
+  ratingEvent (stars) {
     $.ajax({
       method: 'GET',
-      url: `/search?product_types=${prod_typ}&where_find=${where_find}`,
+      url: `/producer/:id/rating?stars=${stars}`,
       success: handleResponse,
       error: this.handleError
     });
