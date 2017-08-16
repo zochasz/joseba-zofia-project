@@ -10,7 +10,6 @@ const googleMapsClient  = require('@google/maps').createClient({
   key: process.env.GOOGLE_APIKEY
 });
 
-
 router.get('/signup', ensureLoggedOut(), (req, res) => {
     res.render('auth/signup', { TYPES });
 });

@@ -1,0 +1,10 @@
+<div class="event-listing">
+  <% events.forEach((event) => { %>
+    <div class="event-box">
+      <a class="event-link" href="#">
+        <p> <strong><%= event.title %> </strong></p>
+        <p> Product type: <%= event.products %> </p>
+      </a>
+    </div>
+  <%  }) %>
+</div>
