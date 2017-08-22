@@ -19,3 +19,29 @@
 $('#sandbox-container .input-group.date').datepicker({
     format: "dd/mm/yyyy"
 });
+
+
+<div class="btn-group col-xs-3 float-right">
+  <button type="button" class="btn btn-default dropdown-toggle btn-avatar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  </button>
+  <ul class="dropdown-menu dropdown-menu-right">
+    <% if (!isAuthenticated) {%>
+    <li><a href="/signup">Sign Up</a></li>
+    <li><a href="/login">Login</a></li>
+    <li>
+    <% } else if (isAuthenticated && isProducer) { %>
+      <li><a href='/event/new'>Create Event</a></li>
+      <li><a href='/event/createdEvents'>Your Created Events</a></li>
+    <% } %>
+    <% if (isAuthenticated) { %>
+      <li><a href='/event/calendar'>Your Calendar</a></li>
+      <li><a href='/producer/favourites'>Your Favourite Producers</a></li>
+      <li><a href="/profile">Your Profile</a></li>
+      <li>
+       <form action="/logout" method="POST">
+        <a href="#" onclick="$(this).closest('form').submit()">Logout</a>
+      </form>
+      </li>
+    <% } %>
+  </ul>
+</div>

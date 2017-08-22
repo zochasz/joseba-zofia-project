@@ -21,7 +21,7 @@ var encryptedPass = bcrypt.hashSync(password, salt);
 //     address: {
 //       street: 'Torrelaguna',
 //       streetNo: '75',
-//       zipCode: '28027',
+//       zip_code: '28027',
 //       city: 'Madrid',
 //       country: 'Spain',
 //       latitude: 40.44583910000001,
@@ -41,7 +41,7 @@ var encryptedPass = bcrypt.hashSync(password, salt);
 //     address: {
 //       street: 'Amparo',
 //       streetNo: '59',
-//       zipCode: '28012',
+//       zip_code: '28012',
 //       city: 'Madrid',
 //       country: 'Spain',
 //       latitude: 40.4088421,
@@ -61,7 +61,7 @@ var encryptedPass = bcrypt.hashSync(password, salt);
 //     address: {
 //       street: 'Orense',
 //       streetNo: 5,
-//       zipCode: '28020',
+//       zip_code: '28020',
 //       city: 'Madrid',
 //       country: 'Spain',
 //       latitude: 40.4474153,
@@ -81,7 +81,7 @@ const events = [
     address       : {
                     street: 'Torrelaguna',
                     streetNo: '75',
-                    zipCode: '28027',
+                    zip_code: '28027',
                     city: 'Madrid',
                     country: 'Spain',
                     latitude: 40.44583910000001,
@@ -97,7 +97,7 @@ const events = [
     address       : {
                     street: 'Amparo',
                     streetNo: '59',
-                    zipCode: '28012',
+                    zip_code: '28012',
                     city: 'Madrid',
                     country: 'Spain',
                     latitude: 40.4088421,
@@ -113,7 +113,7 @@ const events = [
     address       : {
                     street: 'Orense',
                     streetNo: '5',
-                    zipCode: '28020',
+                    zip_code: '28020',
                     city: 'Madrid',
                     country: 'Spain',
                     latitude: 40.4474153,

@@ -1,26 +1,40 @@
-
+<div>
       <form id="my-form" action="/search" method="GET">
-          <select for="productTypes" class="form-control" name="productTypes" id="productTypes">
-              <option hidden value="" selected>CHOOSE A PRODUCT TYPE</option>
-            <% TYPES.forEach((type) => { %>
-              <option type="text" value="<%= type %>"><%= type %> </option>
-            <%  }) %>
-          </select>
-
-          <div class="inputRadio">
-            <input type="radio" name="radioOptions" id="radio1" value="option1" checked > Calendar
-            <input type="radio" name="radioOptions" id="radio2" value="option2"> Producer
+          <div class="productTypes">
+            <select for="productTypes" name="productTypes" id="productTypes">
+                <option hidden value="" selected>CHOOSE A PRODUCT TYPE</option>
+              <% TYPES.forEach((type) => { %>
+                <option type="text" value="<%= type %>"><%= type %> </option>
+              <%  }) %>
+            </select>
           </div>
 
-          <button id="search-button" class="btn btn-default btn-block" type="submit"> SEARCH </button>
-        </form>
+          <div class="inputRadio">
+            <input type="radio" name="radioOptions" id="radio1" value="option1" checked >
+              <label for="radio1"> Calendar </label>
+            <input type="radio" name="radioOptions" id="radio2" value="option2">
+              <label for="radio2"> Producer </label>
+          </div>
 
-        <div class="form-group view-switch" >
+          <div class="search_button">
+            <button id="search-button" class="search" type="submit"> SEARCH </button>
+          </div>
+
+        </form>
+</div>
+<div class="inputRadio list_map">
+  <input type="radio" name="radioOptions" id="radio3" value="option1" checked >
+    <label for="radio3"> List </label>
+  <input type="radio" name="radioOptions" id="radio4" value="option2">
+    <label for="radio4"> Map </label>
+</div>
+
+        <div class="form-group view-switch" style="display:none">
           <label>LIST or MAP?</label>
           <input class="checkbox" type="checkbox" data-toggle="toggle" name="listOrMap" id="toggle-event" data-on="List" data-off="Map">
         </div>
 
-        <div id="form-list" style="display:none">
+        <div id="form-list">
           <div class="event-listing">
             <% events.forEach((event) => { %>
               <div class="event-box">
@@ -33,7 +47,7 @@
           </div>
         </div>
 
-        <div id="form-maps">
+        <div id="form-maps" style="display:none">
             <div id="map" ></div>
         </div>
         <script type="text/javascript"> var myEvents = <%- JSON.stringify(events) %> </script>
