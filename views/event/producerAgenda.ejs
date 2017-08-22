@@ -1,7 +1,8 @@
+<h2> YOUR CREATED EVENTS </h2>
 <div class="event-listing">
   <% events.forEach((event) => { %>
     <div class="event-box">
-      <a class="event-link" href="#">
+      <a class="event-link" href="/event/<%= event._id %>/edit">
         <p> <strong><%= event.title %> </strong></p>
         <p> Product type: <%= event.products %> </p>
       </a>
