@@ -62,11 +62,12 @@ src: local('NeutraText-BookAlt'), url('neutra-text-alt-587261020eccb.woff') form
 }
 
 body {
-  margin: 0;
+  margin: 0 auto;
   padding: 0 0 0 0;
   background-color: #a12e38;
   color: #f4dfd4;
   font-family: 'NeutraText-BookAlt';
+  max-width: 1200px;
 }
 
 a {
@@ -300,8 +301,8 @@ input[type=radio]:checked + label {
   border-bottom: 2px solid #f4dfd4;
 }
 .foto img {
-  margin-left: -300px;
-  margin-top: -200px;
+  width: 600px;
+  height: 120px;
 }
 
 @media (min-width: 600px) {
@@ -355,10 +356,12 @@ input[type=radio]:checked + label {
     margin: 0 auto;
     width: 90%;
   }
+  .foto {
+    height: 200px;
+  }
   .foto img {
-    margin: -150px auto 0 auto;
-
-
+    width: 1200px;
+    height: 200px;
   }
 }
 

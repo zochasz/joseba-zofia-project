@@ -1,4 +1,8 @@
-<div class="foto"> <img src="/images/vegetables.jpg"></div>
+<div class="foto"> <img src="/images/huerto1200.jpg"
+                        sizes="(max-width: 600px) 600px,
+                                1200px"
+                        srcset="/images/huerto600.jpg 600w,
+                                /images/huerto1200.jpg 1200w"></div>
 
 <% if (isAuthenticated) {%>
 <form class="deleteForm" id="calendar-button" action="/event/<%=event.id%>/calendar" method="POST">
@@ -9,6 +13,7 @@
 </form>
 <% } %>
 
+<br>
 <div class="container">
   <div class="row">
     <div class="eventDescription">
