@@ -1,5 +1,5 @@
-$( "#toggle-event" ).change(function() {
-
+$("input[name='radioListMap']").change(function()
+{
     $( "#form-list" ).toggle();
     $( "#form-maps" ).toggle();
 
