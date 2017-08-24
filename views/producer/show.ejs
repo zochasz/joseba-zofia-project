@@ -1,79 +1,56 @@
+<div class="foto"> <img src="/images/huerto1200.jpg"
+                        sizes="(max-width: 600px) 600px,
+                                1200px"
+                        srcset="/images/huerto600.jpg 600w,
+                                /images/huerto1200.jpg 1200w"></div>
 <% if (isAuthenticated) {%>
-<form id="favorite-button" action="/producer/<%=user.id%>/favourites" method="POST">
-  <button type="submit" class="btn btn-default btn-block"> Add to favorites </button>
+<form class="deleteForm" id="favorite-button" action="/producer/<%=user.id%>/favourites" method="POST">
+  <div class="add_button">
+    <img src="/images/Facebook-icon.png">
+    <img src="/images/instagram-icon.png">
+    <button type="submit" class="add"> Add to favorites </button>
+  </div>
 </form>
+
 <br>
-<form id="rate-button" action="/producer/<%=user.id%>/rating" method="POST">
+
+<form id="rate-button" action="/producer/<%=user.id%>/rating" method="POST" style="display:none">
 <input id="input-id" name="input-name" type="number" class="rating" min=1 max=5 step=1 data-size="sx" data-rtl="false">
 </form>
 <% } %>
+
 <br>
 <div class="container">
   <div class="row">
-    <div class="col-sm-6 centered-form">
+    <div class="eventDescription">
 
-        <div class="form-group">
-          <label for="name">Name: </label>
-          <span name="name"> <%= user.name %></span>
-        </div>
-
-        <div class="form-group">
-          <label for="username">Username: </label>
-          <span name="username"> <%= user.username %></span>
-        </div>
-
-        <div class="form-group">
-          <label for="email">Email: </label>
-          <a href="mailto:<%= user.email %>" name="email" ><%= user.email %>"</a>
-        </div>
-
-          <div class="form-group">
-            <label for="street">Street: </label>
-            <span name="street"> <%= user.address.street %></span>
-          </div>
-
-          <div class="form-group">
-            <label for="streetNo">Street Number: </label>
-            <span name="streetNo"> <%= user.address.streetNo %></span>
-          </div>
-
-          <div class="form-group">
-            <label for="zipCode">Zip Code: </label>
-            <span name="zipCode"> <%= user.address.zipCode %></span>
-          </div>
-
-          <div class="form-group">
-            <label for="city">City: </label>
-            <span name="city"> <%= user.address.city %></span>
-          </div>
-
-          <div class="form-group">
-            <label for="country">Country: </label>
-            <span name="country"> <%= user.address.country %></span>
-          </div>
-
-          <div class="form-group">
-            <label for="description">Description:</label>
-            <span name="description"> <%= user.description %></span>
-          </div>
-
-          <div class="form-group">
-            <label for="url">Web Address: </label>
-            <a href ="https://<%= user.url %>" target="_blank" name="url"> <%= user.url %></a>
-          </div>
-
-          <div class="form-group">
-            <label for="phoneNo">Phone Number:</label>
-            <span name="phoneNo"> <%= user.phoneNo %></span>
-          </div>
-
-          <div class="form-group">
-            <label>Product Types: </label>
-            <span name="productTypes"> <%= user.products %></span>
-          </div>
+    <div class="form-group showEvent">
+      <span name="name"> <%= user.name %></span><br>
+      <span name="username"> <%= user.username %></span>
+    </div>
+<br>
+    <div class="form-group showEvent">
+      <a href ="https://<%= user.url %>" target="_blank" name="url"> <%= user.url %></a><br>
+      <span name="phoneNo"> <%= user.phoneNo %></span><br>
+      <a href="mailto:<%= user.email %>" name="email" ><%= user.email %>"</a><br><br>
+      <span name="street"> <%= user.address.street %></span>
+      <span name="streetNo"> <%= user.address.streetNo %></span>
+      <span name="city"> <%= user.address.city %></span>
+      <span name="country"> <%= user.address.country %></span>
+    </div>
+<br>
+    <div class="form-group showEvent">
+      <span>Zip Code: </span>
+      <span name="zipCode"> <%= user.address.zipCode %></span><br><br>
+      <span>Description: </span>
+      <span name="description"> <%= user.description %></span><br>
+      <label>Product Types: </label>
+      <span name="productTypes"> <%= user.products %></span>
     </div>
   </div>
+  </div>
 </div>
+
 <div id="form-maps">
     <div id="map" ></div>
 </div>

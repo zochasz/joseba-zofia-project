@@ -7,13 +7,21 @@
 <% if (isAuthenticated) {%>
 <form class="deleteForm" id="calendar-button" action="/event/<%=event.id%>/calendar" method="POST">
   <div class="add_button">
-    <div class="event-date"> <%= dayWeek %> <%= month %> <%= day %> <%= hour %> </div>
-    <button type="submit" class="add"> Add to calendar </button>
+    <div class="event-date">
+      <div class="event-month"><%= month %></div>
+      <div class="event-day"><%= day %></div>
+      <div class="event-hour"><%= hour %></div>
+    </div>
+    
+    <div>
+      <button type="submit" class="add"> Add to calendar </button>
+    </div>
   </div>
 </form>
 <% } %>
 
 <br>
+<div class="clearfix"></div>
 <div class="container">
   <div class="row">
     <div class="eventDescription">
