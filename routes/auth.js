@@ -49,7 +49,6 @@ router.post('/profile', ensureLoggedIn('/'), (req, res, next) => {
         username,
         email,
         name,
-        password,
         isProducer,
         street,
         streetNo,
@@ -60,7 +59,6 @@ router.post('/profile', ensureLoggedIn('/'), (req, res, next) => {
         url,
         phoneNo
       } = req.body;
-      const hashPass = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 
       if (isProducer) {
         let products = [];
@@ -111,7 +109,6 @@ router.post('/profile', ensureLoggedIn('/'), (req, res, next) => {
               username: username,
               email: email,
               name: name,
-              password: hashPass,
               isProducer: isProducer,
               address: {
                 street: street,
