@@ -8,6 +8,7 @@ require("dotenv").config();
 const googleMapsClient = require('@google/maps').createClient({
   key: process.env.GOOGLE_APIKEY
 });
+const moment = require('moment');
 
 router.get('/new', ensureLoggedIn('/'), (req, res, next) => {
     res.render('event/new', { TYPES });
@@ -121,13 +122,32 @@ router.get('/calendar', (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
+
   Event.findById(req.params.id, (err, event) => {
       if (err) {
         return next(err);
       }
+      const month = moment(event.datetime).format('MMM'); 
+      const dayWeek = moment(event.datetime).format('dddd');
+      const day = moment(event.datetime).format('D');
+      const hour = moment(event.datetime).format('H:mm');
       res.render('event/show', {
-        event, TYPES
+        event, TYPES, month, dayWeek, day, hour
       });
+  });
+});
+
+router.get('/:id/edit', (req, res, next) => {
+  
+  const eventId = req.params.id;
+
+  Event.findById(eventId, (err, event) => {
+    if (err) {
+      return next(err);
+    }
+    res.render('event/edit', {
+      event, TYPES
+    });
   });
 });
 
