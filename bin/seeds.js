@@ -4,12 +4,81 @@ const bcrypt         = require("bcrypt");
 const bcryptSalt     = 10;
 const User = require('../models/user');
 const Event = require('../models/event');
-const TYPES = require('../models/product-types')
+const ProductType = require('../models/product-types');
 
 mongoose.connect("mongodb://localhost/tomatoop-dev");
 var salt = bcrypt.genSaltSync(bcryptSalt);
 const password = "ironhack";
 var encryptedPass = bcrypt.hashSync(password, salt);
+
+// const productTypes = [
+//   {
+//     key        : "fruit",
+//     name      : "Fruit and Vegetables",
+//     image600  : "huerto600.jpg",
+//     image1200 : "huerto1200.jpg"
+//   },
+//   {
+//     key        : "eggs",
+//     name      : "Eggs",
+//     image600  : "eggs600.jpg",
+//     image1200 : "eggs1200.jpg"
+//   },
+//   {
+//     key        : "milk",
+//     name      : "Milk and Cheese",
+//     image600  : "huerto600.jpg",
+//     image1200 : "huerto1200.jpg"
+//   },
+//   {
+//     key        : "bread",
+//     name      : "Bread, Cereals and Bakery",
+//     image600  : "huerto600.jpg",
+//     image1200 : "huerto1200.jpg"
+//   },
+//   {
+//     key        : "oil",
+//     name      : "Oil and Vinegar",
+//     image600  : "huerto600.jpg",
+//     image1200 : "huerto1200.jpg"
+//   },
+//   {
+//     key        : "beer",
+//     name      : "Beer, Vine and Spirits",
+//     image600  : "huerto600.jpg",
+//     image1200 : "huerto1200.jpg"
+//   },
+//   {
+//     key        : "meat",
+//     name      : "Meat",
+//     image600  : "huerto600.jpg",
+//     image1200 : "huerto1200.jpg"
+//   },
+//   {
+//     key        : "coldMeat",
+//     name      : "Cold Meat",
+//     image600  : "huerto600.jpg",
+//     image1200 : "huerto1200.jpg"
+//   },
+//   {
+//     key        : "jams",
+//     name      : "Jams and Honey",
+//     image600  : "huerto600.jpg",
+//     image1200 : "huerto1200.jpg"
+//   },
+//   {
+//     key        : "appetizers",
+//     name      : "Appetizers",
+//     image600  : "huerto600.jpg",
+//     image1200 : "huerto1200.jpg"
+//   },
+//   {
+//     key        : "tinned",
+//     name      : "Tinned Food",
+//     image600  : "huerto600.jpg",
+//     image1200 : "huerto1200.jpg"
+//   }
+// ];
 
 // const producers = [
 //   {
@@ -30,7 +99,7 @@ var encryptedPass = bcrypt.hashSync(password, salt);
 //     description: 'Verduras ecologicas, frescas y de temporada.',
 //     url: 'www.verduras_lopez.com',
 //     phoneNo: '666 44 55 66',
-//     products: [ "Fruit and Vegetables" ],
+//     products: [ "59a06171d9e7ca6b545189e1" ]
 //   },
 //   {
 //     username: 'Granja La Colina',
@@ -50,7 +119,7 @@ var encryptedPass = bcrypt.hashSync(password, salt);
 //     description: 'Huevos de gallinas criadas en libertad.',
 //     url: 'www.granjalacolina.com',
 //     phoneNo: '666 11 22 33',
-//     products: [ "Eggs" ]
+//     products: [ "59a06171d9e7ca6b545189e2" ]
 //   },
 //   {
 //     username: 'Colmena Romero',
@@ -70,12 +139,12 @@ var encryptedPass = bcrypt.hashSync(password, salt);
 //     description: 'Miel de romero.',
 //     url: 'www.colmena-romero.com',
 //     phoneNo: '666 32 43 54',
-//     products: [ "Jams and Honey" ],
+//     products: [ "59a06171d9e7ca6b545189e4" ]
 //   }
 // ];
 const events = [
     {
-    _creator      : "599f2881227c1bbffbfdacdb",
+    _creator      : "59a062f9415e50064041591b",
     title         : 'Venta de Miel de Romero',
     description   : 'Oferta: tarro de 05L - 3euros, si te llevas 2 - 5euros',
     address       : {
@@ -88,10 +157,10 @@ const events = [
                     longitude: -3.6557812
                   },
     datetime      : new Date("2017-09-05T12:30:00.000"),
-    products      : [ "Jams and Honey" ]
+    products      : [ "59a06171d9e7ca6b545189e1" ]
     },
     {
-    _creator      : "599f2881227c1bbffbfdacda",
+    _creator      : "59a062f9415e50064041591a",
     title         : 'Venta de Huevos de la Colina',
     description   : '6 huevos blancos XL - 3,5euros, 6 huevos morenos XL - 3,2euros',
     address       : {
@@ -104,10 +173,10 @@ const events = [
                     longitude: -3.7023373
                   },
     datetime      : new Date("2017-09-07T11:30:00.000"),
-    products      : [ "Eggs" ]
+    products      : [ "59a06171d9e7ca6b545189e2" ]
     },
     {
-    _creator      : "599f2881227c1bbffbfdacd9",
+    _creator      : "59a062f9415e50064041591c",
     title         : 'Vendo verdirita fresca, fresca de mi huerta',
     description   : 'Tengo tomates rambo, acelga fresca, zanahorias riquisimas, puerros, cebollas, calabacines y ajos',
     address       : {
@@ -120,9 +189,16 @@ const events = [
                     longitude: -3.6956848
                   },
     datetime      : new Date("2017-09-08T20:30:00.000"),
-    products      : [ "Fruit and Vegetables" ]
+    products      : [ "59a06171d9e7ca6b545189e4" ]
   }];
 
+// ProductType.create(productTypes, (err, docs)=>{
+//   if (err) { throw err };
+//     docs.forEach( (productType) => {
+//       console.log(productType.name)
+//     })
+//     mongoose.connection.close();
+// });
 
 // User.create(producers, (err, user) => {
 //   if (err) {

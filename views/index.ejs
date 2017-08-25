@@ -3,8 +3,8 @@
           <div class="productTypes">
             <select for="productTypes" name="productTypes" id="productTypes">
                 <option hidden value="" selected>CHOOSE A PRODUCT TYPE</option>
-              <% TYPES.forEach((type) => { %>
-                <option type="text" value="<%= type %>"><%= type %> </option>
+              <% productTypes.forEach((type) => { %>
+                <option type="text" value="<%= type %>"><%= type.name %> </option>
               <%  }) %>
             </select>
           </div>
@@ -38,8 +38,8 @@
                     <p class="date"><%= event.datetime.toString().substring(4, 11) %> </p>
                     <p class="hour"><%= event.datetime.toString().substring(15, 21) %> h.</p>
                   </div>
-                  <p class="event-title"> <strong><%= event.title %> </strong></p>
-                  <p> Product type: <%= event.products %> </p>
+                  <p> <strong><%= event.title %> </strong></p>
+                  <p> Product type: <%= event.products[0].name %>
                 </a>
               </div>
             <%  }) %>

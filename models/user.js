@@ -1,7 +1,7 @@
-const mongoose    = require("mongoose");
-const Schema      = mongoose.Schema;
-const TYPES       = require('./product-types');
-const moment      = require("moment");
+const mongoose      = require("mongoose");
+const Schema        = mongoose.Schema;
+const moment        = require("moment");
+const ProductType   = require('./product-types');
 
 const UserSchema  = new Schema({
   username        : { type: String, required: true, unique: true },
@@ -24,7 +24,7 @@ const UserSchema  = new Schema({
   url             : String,
   phoneNo         : String,
   imgurl          : String,
-  products        : [ { type: String, enum: TYPES, required: true } ],
+  products      : [ { type: Schema.Types.ObjectId, ref: 'ProductType', required: true } ],
   rate            : [ {
                     _id: { type: Schema.Types.ObjectId, ref: 'User' },
                     stars: Number

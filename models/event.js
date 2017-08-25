@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
-const TYPES    = require('./product-types');
 const User     = require('./user');
+const ProductType     = require('./product-types');
 const moment   = require("moment");
 
 const EventSchema = new Schema({
@@ -18,7 +18,7 @@ const EventSchema = new Schema({
                   latitude: Number,
                   longitude: Number
                   },
-  products      : [ { type: String, enum: TYPES, required: true } ],
+  products      : [ { type: Schema.Types.ObjectId, ref: 'ProductType', required: true } ],
   comments      : [ {
                   type: Schema.Types.ObjectId,
                   ref: 'User',
