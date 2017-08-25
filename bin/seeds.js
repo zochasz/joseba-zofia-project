@@ -11,74 +11,74 @@ var salt = bcrypt.genSaltSync(bcryptSalt);
 const password = "ironhack";
 var encryptedPass = bcrypt.hashSync(password, salt);
 
-const productTypes = [
-  {
-    key        : "fruit",
-    name      : "Fruit and Vegetables",
-    image600  : "huerto600.jpg",
-    image1200 : "huerto1200.jpg"
-  },
-  {
-    key        : "eggs",
-    name      : "Eggs",
-    image600  : "eggs600.jpg",
-    image1200 : "eggs1200.jpg"
-  },
-  {
-    key        : "milk",
-    name      : "Milk and Cheese",
-    image600  : "huerto600.jpg",
-    image1200 : "huerto1200.jpg"
-  },
-  {
-    key        : "bread",
-    name      : "Bread, Cereals and Bakery",
-    image600  : "huerto600.jpg",
-    image1200 : "huerto1200.jpg"
-  },
-  {
-    key        : "oil",
-    name      : "Oil and Vinegar",
-    image600  : "huerto600.jpg",
-    image1200 : "huerto1200.jpg"
-  },
-  {
-    key        : "beer",
-    name      : "Beer, Vine and Spirits",
-    image600  : "huerto600.jpg",
-    image1200 : "huerto1200.jpg"
-  },
-  {
-    key        : "meat",
-    name      : "Meat",
-    image600  : "huerto600.jpg",
-    image1200 : "huerto1200.jpg"
-  },
-  {
-    key        : "coldMeat",
-    name      : "Cold Meat",
-    image600  : "huerto600.jpg",
-    image1200 : "huerto1200.jpg"
-  },
-  {
-    key        : "jams",
-    name      : "Jams and Honey",
-    image600  : "huerto600.jpg",
-    image1200 : "huerto1200.jpg"
-  },
-  {
-    key        : "appetizers",
-    name      : "Appetizers",
-    image600  : "huerto600.jpg",
-    image1200 : "huerto1200.jpg"
-  },
-  {
-    key        : "tinned",
-    name      : "Tinned Food",
-    image600  : "huerto600.jpg",
-    image1200 : "huerto1200.jpg"
-  }
-];
+// const productTypes = [
+//   {
+//     key        : "fruit",
+//     name      : "Fruit and Vegetables",
+//     image600  : "huerto600.jpg",
+//     image1200 : "huerto1200.jpg"
+//   },
+//   {
+//     key        : "eggs",
+//     name      : "Eggs",
+//     image600  : "eggs600.jpg",
+//     image1200 : "eggs1200.jpg"
+//   },
+//   {
+//     key        : "milk",
+//     name      : "Milk and Cheese",
+//     image600  : "cheese600.jpg",
+//     image1200 : "cheese1200.jpg"
+//   },
+//   {
+//     key        : "bread",
+//     name      : "Bread, Cereals and Bakery",
+//     image600  : "bread600.jpg",
+//     image1200 : "bread1200.jpg"
+//   },
+//   {
+//     key        : "oil",
+//     name      : "Oil and Vinegar",
+//     image600  : "oliveOil600.jpg",
+//     image1200 : "oliveOil1200.jpg"
+//   },
+//   {
+//     key        : "beer",
+//     name      : "Beer, Vine and Spirits",
+//     image600  : "vine600.jpg",
+//     image1200 : "vine1200.jpg"
+//   },
+//   {
+//     key        : "meat",
+//     name      : "Meat",
+//     image600  : "meat600.jpg",
+//     image1200 : "meat1200.jpg"
+//   },
+//   {
+//     key        : "coldMeat",
+//     name      : "Cold Meat",
+//     image600  : "jam600.jpg",
+//     image1200 : "jam1200.jpg"
+//   },
+//   {
+//     key        : "jams",
+//     name      : "Jams and Honey",
+//     image600  : "honey600.jpg",
+//     image1200 : "honey1200.jpg"
+//   },
+//   {
+//     key        : "appetizers",
+//     name      : "Appetizers",
+//     image600  : "apetizer600.jpg",
+//     image1200 : "apetizer1200.jpg"
+//   },
+//   {
+//     key        : "tinned",
+//     name      : "Tinned Food",
+//     image600  : "anchoas600.jpg",
+//     image1200 : "anchoas1200.jpg"
+//   }
+// ];
 
 // const producers = [
 //   {
