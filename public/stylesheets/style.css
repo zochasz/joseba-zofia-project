@@ -288,6 +288,10 @@ input[type=radio]:checked + label {
   padding-top: 13px;
   font-size: 13px;
 }
+.date, .hour {
+  width: 60px;
+
+}
 .float-right {
   float: right;
 }
@@ -310,12 +314,15 @@ input[type=radio]:checked + label {
 .eventDescription {
   float: none;
   /*background-color: green;*/
-  margin: 15px 0px;
+  margin: 0px 0px;
   padding: 0 15px;
 }
 .showEvent {
   /*background-color: red;*/
   width: 100%
+}
+.btn-primary{
+  background-color: #a12e38;
 }
 .foto {
   width: 100%;
@@ -372,9 +379,13 @@ input[type=radio]:checked + label {
   }
   .event-box {
     width: 33.3333333333%;
+    /*height: 95px;*/
     padding: 10px;
     border: 1px solid #AF4A56;
     float: left;
+  }
+  .event-title {
+    height: 45px;
   }
   .showEvent {
     margin: 0 auto;

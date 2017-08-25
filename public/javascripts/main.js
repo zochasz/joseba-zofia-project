@@ -2,10 +2,11 @@ $("input[name='radioListMap']").change(function()
 {
     $( "#form-list" ).toggle();
     $( "#form-maps" ).toggle();
+    initializeGoogleMap();
 
 });
 
-$(document).ready(function(){
+function initializeGoogleMap(){
 
   // Create and Initialize Map
   const map = new google.maps.Map(document.getElementById('map'), {
@@ -30,4 +31,4 @@ $(document).ready(function(){
     var pin = new google.maps.Marker({ position, map, title  });
     markers.push(pin)
   });
-});
+};

@@ -3,14 +3,15 @@ const router = express.Router();
 const TYPES = require('../models/product-types');
 const Event = require('../models/event');
 const User = require('../models/user');
+const moment = require('moment');
 
 router.get('/', (req, res, next) => {
 
-  Event.find({}, (err, events) => {
-     if (err) {
-       return next(err);
-     }
-     res.render('index', { TYPES, events });
+  Event.find({}).sort({datetime: 1}).exec( (err, events) => {
+      if (err) {
+        return next(err);
+      }
+    res.render('index', { TYPES, events });
   });
 });
 

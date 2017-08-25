@@ -75,7 +75,7 @@ var encryptedPass = bcrypt.hashSync(password, salt);
 // ];
 const events = [
     {
-    _creator      : "599f07d225ac0e78c0823646",
+    _creator      : "599f2881227c1bbffbfdacdb",
     title         : 'Venta de Miel de Romero',
     description   : 'Oferta: tarro de 05L - 3euros, si te llevas 2 - 5euros',
     address       : {
@@ -91,7 +91,7 @@ const events = [
     products      : [ "Jams and Honey" ]
     },
     {
-    _creator      : "599f07d225ac0e78c0823647",
+    _creator      : "599f2881227c1bbffbfdacda",
     title         : 'Venta de Huevos de la Colina',
     description   : '6 huevos blancos XL - 3,5euros, 6 huevos morenos XL - 3,2euros',
     address       : {
@@ -107,7 +107,7 @@ const events = [
     products      : [ "Eggs" ]
     },
     {
-    _creator      : "599f07d225ac0e78c0823648",
+    _creator      : "599f2881227c1bbffbfdacd9",
     title         : 'Vendo verdirita fresca, fresca de mi huerta',
     description   : 'Tengo tomates rambo, acelga fresca, zanahorias riquisimas, puerros, cebollas, calabacines y ajos',
     address       : {

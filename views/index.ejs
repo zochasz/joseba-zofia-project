@@ -34,7 +34,11 @@
             <% events.forEach((event) => { %>
               <div class="event-box">
                 <a class="event-link" href="/event/<%= event._id %>">
-                  <p> <strong><%= event.title %> </strong></p>
+                  <div class="event-date">
+                    <p class="date"><%= event.datetime.toString().substring(4, 11) %> </p>
+                    <p class="hour"><%= event.datetime.toString().substring(15, 21) %> h.</p>
+                  </div>
+                  <p class="event-title"> <strong><%= event.title %> </strong></p>
                   <p> Product type: <%= event.products %> </p>
                 </a>
               </div>

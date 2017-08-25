@@ -27,7 +27,7 @@ router.post('/new', ensureLoggedIn('/'), (req, res, next) => {
         country
       } = req.body;
     const datetime = new Date(datetimepicker.substring(0,16).replace(" ","T"));
-    
+
     let products = [];
     if (req.body.productType1) {
       products.push("Fruit and Vegetables")
@@ -101,7 +101,7 @@ router.post('/new', ensureLoggedIn('/'), (req, res, next) => {
 });
 
 router.get('/createdEvents', (req, res, next) => {
- 
+
   Event.find({ _creator: req.user._id }, (err, events) => {
         if (err) {
           return next(err);
@@ -127,7 +127,7 @@ router.get('/:id', (req, res, next) => {
       if (err) {
         return next(err);
       }
-      const month = moment(event.datetime).format('MMM'); 
+      const month = moment(event.datetime).format('MMM');
       const dayWeek = moment(event.datetime).format('dddd');
       const day = moment(event.datetime).format('D');
       const hour = moment(event.datetime).format('H:mm');
@@ -138,7 +138,7 @@ router.get('/:id', (req, res, next) => {
 });
 
 router.get('/:id/edit', (req, res, next) => {
-  
+
   const eventId = req.params.id;
 
   Event.findById(eventId, (err, event) => {
@@ -166,7 +166,7 @@ router.post('/:id', ensureLoggedIn('/'), (req, res, next) => {
         country
       } = req.body;
     const datetime = new Date(datetimepicker.substring(0,16).replace(" ","T"));
-    
+
     let products = [];
     if (req.body.productType1) {
       products.push("Fruit and Vegetables")

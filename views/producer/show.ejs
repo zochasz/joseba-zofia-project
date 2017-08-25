@@ -12,16 +12,11 @@
   </div>
 </form>
 
-<br>
 
-<form id="rate-button" action="/producer/<%=user.id%>/rating" method="POST" style="display:none">
-<input id="input-id" name="input-name" type="number" class="rating" min=1 max=5 step=1 data-size="sx" data-rtl="false">
-</form>
 <% } %>
 
 <br>
-<div class="container">
-  <div class="row">
+
     <div class="eventDescription">
 
     <div class="form-group showEvent">
@@ -48,8 +43,7 @@
       <span name="productTypes"> <%= user.products %></span>
     </div>
   </div>
-  </div>
-</div>
+
 
 <div id="form-maps">
     <div id="map" ></div>
