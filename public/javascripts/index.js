@@ -24,12 +24,16 @@ function drawFilteredEvents(list){
   if (list.events) {
     list.events.forEach((event) => {
     const showEvents = `
-     <div class="event-box">
-       <a class="event-link" href="/event/${ event._id }">
-         <p> <strong>${ event.title } </strong></p>
-         <p> Product type: ${ event.products } </p>
-       </a>
-     </div>
+    <div class="event-box">
+      <a class="event-link" href="/event/${ event._id }">
+        <div class="event-date">
+          <p class="date">${ event.datetime.toString().substring(4, 11) } </p>
+          <p class="hour">${ event.datetime.toString().substring(15, 21) } h.</p>
+        </div>
+        <p> <strong>${ event.title } </strong></p>
+        <p> Product type: ${ event.products[0].name }
+      </a>
+    </div>
    `
    $(".event-listing").append(showEvents);
    })
@@ -40,7 +44,7 @@ function drawFilteredEvents(list){
     <div class="event-box">
       <a class="event-link" href="/producer/${ user._id }">
         <p> <strong>${ user.name } </strong></p>
-        <p> Product type: ${ user.products } </p>
+        <p> Product type: ${ user.products[0].name } </p>
       </a>
     </div>
   `

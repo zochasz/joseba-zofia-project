@@ -14,6 +14,7 @@ router.get('/', (req, res, next) => {
      Event
      .find({})
      .populate('products')
+     .sort({datetime: 1})
      .exec(function (err, events) {
        if (err) {
          return next(err);

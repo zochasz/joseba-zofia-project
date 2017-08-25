@@ -45,3 +45,13 @@ $('#sandbox-container .input-group.date').datepicker({
     <% } %>
   </ul>
 </div>
+
+router.get('/', (req, res, next) => {
+
+  Event.find({}).sort({datetime: 1}).exec( (err, events) => {
+      if (err) {
+        return next(err);
+      }
+    res.render('index', { TYPES, events });
+  });
+});
