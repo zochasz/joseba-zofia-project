@@ -4,7 +4,7 @@
             <select for="productTypes" name="productTypes" id="productTypes">
                 <option hidden value="" selected>CHOOSE A PRODUCT TYPE</option>
               <% productTypes.forEach((type) => { %>
-                <option type="text" value="<%= type %>"><%= type.name %> </option>
+                <option type="text" value="<%= type._id %>"><%= type.name %> </option>
               <%  }) %>
             </select>
           </div>
@@ -33,6 +33,7 @@
           <div class="event-listing">
             <% events.forEach((event) => { %>
               <div class="event-box">
+                <img src="/images/<%= event.products[0].image600 %>" alt="Product Image">
                 <a class="event-link" href="/event/<%= event._id %>">
                   <div class="event-date">
                     <p class="date"><%= event.datetime.toString().substring(4, 11) %> </p>
