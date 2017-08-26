@@ -3,6 +3,7 @@
   <% users.forEach((user) => { %>
     <div class="event-box">
       <a class="event-link" href="/producer/<%= user._id %>">
+        <img src="/images/<%= user.products[0].image600 %>" alt="Product Image">
         <p> <strong><%= user.name %> </strong></p>
         <p> Product type: <%= user.products[0].name %> </p>
         <form class="deleteForm" id="delete-favorite-button" action="/producer/<%=user.id%>/delete" method="POST">
