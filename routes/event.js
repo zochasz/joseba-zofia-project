@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const TYPES = require('../models/product-types');
+const ProductTypes = require('../models/product-types');
 const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 const Event = require('../models/event');
 const User = require('../models/user');
@@ -11,10 +11,19 @@ const googleMapsClient = require('@google/maps').createClient({
 const moment = require('moment');
 
 router.get('/new', ensureLoggedIn('/'), (req, res, next) => {
-    res.render('event/new', { TYPES });
+    ProductTypes.find({}, (err, productTypes) => {
+      if (err) {
+        return next(err);
+      }
+      res.render('event/new', { productTypes });
+    });
 });
 
 router.post('/new', ensureLoggedIn('/'), (req, res, next) => {
+  ProductTypes.find({}, (err, productTypes) => {
+    if (err) {
+      return next(err);
+    }
     const _creator = req.user._id;
     const {
         title,
@@ -29,39 +38,12 @@ router.post('/new', ensureLoggedIn('/'), (req, res, next) => {
     const datetime = new Date(datetimepicker.substring(0,16).replace(" ","T"));
 
     let products = [];
-    if (req.body.productType1) {
-      products.push("Fruit and Vegetables")
-    };
-    if (req.body.productType2) {
-      products.push("Eggs")
-    };
-    if (req.body.productType3) {
-      products.push("Milk and Cheese")
-    };
-    if (req.body.productType4) {
-      products.push("Bread, Cereals and Bakery")
-    };
-    if (req.body.productType5) {
-      products.push("Oil and Vinegar")
-    }
-    if (req.body.productType6) {
-      products.push("Beer, Vine and Spirits")
-    };
-    if (req.body.productType7) {
-      products.push("Meat")
-    };
-    if (req.body.productType8) {
-      products.push("Cold Meat")
-    };
-    if (req.body.productType9) {
-      products.push("Jams and Honey")
-    };
-    if (req.body.productType10) {
-      products.push("Appetizers")
-    };
-    if (req.body.productType11) {
-      products.push("Tinned Food")
-    };
+    const reqBodyKeys = Object.keys(req.body);
+    productTypes.forEach((type) => {
+       if (reqBodyKeys.indexOf(type._id.toString()) !== -1) {
+         products.push(type._id);
+       }
+    });
 
     const calculatedAddress = street + " " + streetNo + " " + zipCode + " " + city + " " + country;
 
@@ -98,11 +80,12 @@ router.post('/new', ensureLoggedIn('/'), (req, res, next) => {
         });
       }
     });
+  });
 });
 
 router.get('/createdEvents', (req, res, next) => {
 
-  Event.find({ _creator: req.user._id }, (err, events) => {
+  Event.find({ _creator: req.user._id }).populate('products').exec((err, events) => {
         if (err) {
           return next(err);
         }
@@ -138,20 +121,29 @@ router.get('/:id', (req, res, next) => {
 });
 
 router.get('/:id/edit', (req, res, next) => {
+ ProductTypes.find({}, (err, productTypes) => {
+  if (err) {
+    return next(err);
+  }
 
   const eventId = req.params.id;
-
   Event.findById(eventId, (err, event) => {
     if (err) {
       return next(err);
     }
     res.render('event/edit', {
-      event, TYPES
+      event, productTypes
     });
   });
+ });
 });
 
 router.post('/:id', ensureLoggedIn('/'), (req, res, next) => {
+
+  ProductTypes.find({}, (err, productTypes) => {
+    if (err) {
+      return next(err);
+    }
 
     const eventId = req.params.id;
     const _creator = req.user._id;
@@ -168,39 +160,12 @@ router.post('/:id', ensureLoggedIn('/'), (req, res, next) => {
     const datetime = new Date(datetimepicker.substring(0,16).replace(" ","T"));
 
     let products = [];
-    if (req.body.productType1) {
-      products.push("Fruit and Vegetables")
-    };
-    if (req.body.productType2) {
-      products.push("Eggs")
-    };
-    if (req.body.productType3) {
-      products.push("Milk and Cheese")
-    };
-    if (req.body.productType4) {
-      products.push("Bread, Cereals and Bakery")
-    };
-    if (req.body.productType5) {
-      products.push("Oil and Vinegar")
-    }
-    if (req.body.productType6) {
-      products.push("Beer, Vine and Spirits")
-    };
-    if (req.body.productType7) {
-      products.push("Meat")
-    };
-    if (req.body.productType8) {
-      products.push("Cold Meat")
-    };
-    if (req.body.productType9) {
-      products.push("Jams and Honey")
-    };
-    if (req.body.productType10) {
-      products.push("Appetizers")
-    };
-    if (req.body.productType11) {
-      products.push("Tinned Food")
-    };
+    const reqBodyKeys = Object.keys(req.body);
+    productTypes.forEach((type) => {
+       if (reqBodyKeys.indexOf(type._id.toString()) !== -1) {
+         products.push(type._id);
+       }
+    });
 
     const calculatedAddress = street + " " + streetNo + " " + zipCode + " " + city + " " + country;
 
@@ -233,6 +198,7 @@ router.post('/:id', ensureLoggedIn('/'), (req, res, next) => {
         });
       }
     });
+  });
 });
 
 router.post("/:id/calendar", (req, res, next) => {

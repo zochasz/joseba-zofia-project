@@ -1,6 +1,6 @@
 const express = require('express');
 const passport = require('passport');
-const TYPES = require('../models/product-types');
+const ProductTypes = require('../models/product-types');
 const User = require('../models/user');
 const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 const router  = express.Router();
@@ -11,7 +11,12 @@ const googleMapsClient  = require('@google/maps').createClient({
 });
 
 router.get('/signup', ensureLoggedOut(), (req, res) => {
-    res.render('auth/signup', { TYPES });
+    ProductTypes.find({}, (err, productTypes) => {
+      if (err) {
+        return next(err);
+      }
+      res.render('auth/signup', { productTypes });
+    });
 });
 
 router.post('/signup', ensureLoggedOut(), passport.authenticate('local-signup', {
@@ -34,17 +39,26 @@ router.post('/logout', ensureLoggedIn('/'), (req, res) => {
 });
 
 router.get('/profile', ensureLoggedIn('/'), (req, res, next) => {
-  User.findById(req.user._id, (err, user) => {
+  ProductTypes.find({}, (err, productTypes) => {
       if (err) {
         return next(err);
       }
-      res.render('auth/profile', {
-        user, TYPES
+      User.findById(req.user._id, (err, user) => {
+          if (err) {
+            return next(err);
+          }
+          res.render('auth/profile', {
+            user, productTypes
+          });
       });
   });
 });
 
 router.post('/profile', ensureLoggedIn('/'), (req, res, next) => {
+ ProductTypes.find({}, (err, productTypes) => {
+  if (err) {
+    return next(err);
+  }
   const {
         username,
         email,
@@ -62,39 +76,12 @@ router.post('/profile', ensureLoggedIn('/'), (req, res, next) => {
 
       if (isProducer) {
         let products = [];
-        if (req.body.productType1) {
-          products.push("Fruit and Vegetables")
-        };
-        if (req.body.productType2) {
-          products.push("Eggs")
-        };
-        if (req.body.productType3) {
-          products.push("Milk and Cheese")
-        };
-        if (req.body.productType4) {
-          products.push("Bread, Cereals and Bakery")
-        };
-        if (req.body.productType5) {
-          products.push("Oil and Vinegar")
-        }
-        if (req.body.productType6) {
-          products.push("Beer, Vine and Spirits")
-        };
-        if (req.body.productType7) {
-          products.push("Meat")
-        };
-        if (req.body.productType8) {
-          products.push("Cold Meat")
-        };
-        if (req.body.productType9) {
-          products.push("Jams and Honey")
-        };
-        if (req.body.productType10) {
-          products.push("Appetizers")
-        };
-        if (req.body.productType11) {
-          products.push("Tinned Food")
-        };
+        const reqBodyKeys = Object.keys(req.body);
+        productTypes.forEach((type) => {
+           if (reqBodyKeys.indexOf(type._id.toString()) !== -1) {
+             products.push(type._id);
+           }
+        });
 
         const calculatedAddress = street + " " + streetNo + " " + zipCode + " " + city + " " + country;
 
@@ -147,6 +134,7 @@ router.post('/profile', ensureLoggedIn('/'), (req, res, next) => {
           return res.redirect('/');
         });
       }
+ });
 });
 
 module.exports = router;
