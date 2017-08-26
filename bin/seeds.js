@@ -99,7 +99,7 @@ var encryptedPass = bcrypt.hashSync(password, salt);
 //     description: 'Verduras ecologicas, frescas y de temporada.',
 //     url: 'www.verduras_lopez.com',
 //     phoneNo: '666 44 55 66',
-//     products: [ "59a07e69110ca7d2c8f8895a" ]
+//     products: [ "59a13fcbac19431ac0cc313c" ]
 //   },
 //   {
 //     username: 'Granja La Colina',
@@ -119,7 +119,7 @@ var encryptedPass = bcrypt.hashSync(password, salt);
 //     description: 'Huevos de gallinas criadas en libertad.',
 //     url: 'www.granjalacolina.com',
 //     phoneNo: '666 11 22 33',
-//     products: [ "59a07e69110ca7d2c8f8895b" ]
+//     products: [ "59a13fcbac19431ac0cc313d" ]
 //   },
 //   {
 //     username: 'Colmena Romero',
@@ -139,12 +139,12 @@ var encryptedPass = bcrypt.hashSync(password, salt);
 //     description: 'Miel de romero.',
 //     url: 'www.colmena-romero.com',
 //     phoneNo: '666 32 43 54',
-//     products: [ "59a07e69110ca7d2c8f88962" ]
+//     products: [ "59a13fcbac19431ac0cc313e" ]
 //   }
 // ];
 const events = [
     {
-    _creator      : "59a07f21811937d2df8e8734",
+    _creator      : "59a140933e67550878229f83",
     title         : 'Venta de Miel de Romero',
     description   : 'Oferta: tarro de 05L - 3euros, si te llevas 2 - 5euros',
     address       : {
@@ -157,10 +157,10 @@ const events = [
                     longitude: -3.6557812
                   },
     datetime      : new Date("2017-09-05T12:30:00.000"),
-    products      : [ "59a07e69110ca7d2c8f88962" ]
+    products      : [ "59a13fcbac19431ac0cc313c" ]
     },
     {
-    _creator      : "59a07f21811937d2df8e8733",
+    _creator      : "59a140933e67550878229f84",
     title         : 'Venta de Huevos de la Colina',
     description   : '6 huevos blancos XL - 3,5euros, 6 huevos morenos XL - 3,2euros',
     address       : {
@@ -173,10 +173,10 @@ const events = [
                     longitude: -3.7023373
                   },
     datetime      : new Date("2017-09-07T11:30:00.000"),
-    products      : [ "59a07e69110ca7d2c8f8895b" ]
+    products      : [ "59a13fcbac19431ac0cc313d" ]
     },
     {
-    _creator      : "59a07f21811937d2df8e8732",
+    _creator      : "59a140933e67550878229f85",
     title         : 'Vendo verdirita fresca, fresca de mi huerta',
     description   : 'Tengo tomates rambo, acelga fresca, zanahorias riquisimas, puerros, cebollas, calabacines y ajos',
     address       : {
@@ -189,7 +189,7 @@ const events = [
                     longitude: -3.6956848
                   },
     datetime      : new Date("2017-09-08T20:30:00.000"),
-    products      : [ "59a07e69110ca7d2c8f8895a" ]
+    products      : [ "59a13fcbac19431ac0cc313e" ]
   }];
 
 // ProductType.create(productTypes, (err, docs)=>{

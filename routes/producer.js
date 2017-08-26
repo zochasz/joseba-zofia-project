@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 const TYPES = require('../models/product-types');
 const User = require('../models/user');
 
-router.get('/favourites', (req, res, next) => {
+router.get('/favourites', ensureLoggedIn('/'), (req, res, next) => {
   User.findById(req.user._id).populate({path:'_favourites',populate:{path:'products'}}).exec((err, user) => {
 
         if (err) {
@@ -27,7 +28,7 @@ router.get('/:id', (req, res, next) => {
 });
 
 
-router.post("/:id/favourites", (req, res, next) => {
+router.post("/:id/favourites", ensureLoggedIn('/'), (req, res, next) => {
 
   const producerId = req.params.id;
   const userId = req.user._id;
@@ -55,7 +56,7 @@ router.post("/:id/rating", (req, res, next) => {
     });
 });
 
-router.post("/:id/delete", (req, res, next) => {
+router.post("/:id/delete", ensureLoggedIn('/'), (req, res, next) => {
 
   const producerId = req.params.id;
   const userId = req.user._id;
