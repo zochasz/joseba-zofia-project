@@ -95,8 +95,7 @@ router.get('/createdEvents', (req, res, next) => {
 
 router.get('/calendar', (req, res, next) => {
 
-  User.findById(req.user._id).populate('_events').exec((err, user) => {
-
+  User.findById(req.user._id).populate({path:'_events',populate:{path:'products'}}).exec((err, user) => {
         if (err) {
           return next(err);
         }
@@ -105,17 +104,21 @@ router.get('/calendar', (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
-
-  Event.findById(req.params.id, (err, event) => {
+  ProductTypes.find({}, (err, productTypes) => {
       if (err) {
         return next(err);
       }
-      const month = moment(event.datetime).format('MMM');
-      const dayWeek = moment(event.datetime).format('dddd');
-      const day = moment(event.datetime).format('D');
-      const hour = moment(event.datetime).format('H:mm');
-      res.render('event/show', {
-        event, TYPES, month, dayWeek, day, hour
+      Event.findById(req.params.id, (err, event) => {
+          if (err) {
+            return next(err);
+          }
+          const month = moment(event.datetime).format('MMM');
+          const dayWeek = moment(event.datetime).format('dddd');
+          const day = moment(event.datetime).format('D');
+          const hour = moment(event.datetime).format('H:mm');
+          res.render('event/show', {
+            event, productTypes, month, dayWeek, day, hour
+          });
       });
   });
 });

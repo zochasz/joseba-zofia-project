@@ -4,7 +4,7 @@
     <div class="event-box">
       <a class="event-link" href="/event/<%= event._id %>">
         <p> <strong><%= event.title %> </strong></p>
-        <p> Product type: <%= event.products %> </p>
+        <p> Product type: <%= event.products[0].name %> </p>
         <form class="deleteForm" id="delete-calendar-button" action="/event/<%=event.id%>/delete" method="POST">
           <div class="search_button">
             <button type="submit" class="search"> Delete </button>
