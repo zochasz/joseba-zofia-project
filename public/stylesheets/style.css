@@ -305,6 +305,7 @@ input[type=radio]:checked + label {
   width: 100%;
   padding: 10px;
   border-bottom: 1px solid #AF4A56;
+  /*height: 200px;*/
 }
 .event-link {
   width: 100%;

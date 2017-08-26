@@ -24,13 +24,13 @@ function drawFilteredEvents(list){
   if (list.events) {
     list.events.forEach((event) => {
 console.log(event.datetime);
-console.log(event.datetime.toString());
+console.log(new Date(event.datetime.toString()));
     const showEvents = `
     <div class="event-box">
       <a class="event-link" href="/event/${ event._id }">
       <img src="/images/${ event.products[0].image600 }" alt="Product Image">
         <div class="event-date">
-          <p class="date">${ event.datetime.toString() } </p>
+          <p class="date">${ new Date(event.datetime).toString().substring(4, 11) } </p>
           <p class="hour">${ event.datetime.toString().substring(11, 16) } h.</p>
         </div>
         <p> <strong>${ event.title } </strong></p>
