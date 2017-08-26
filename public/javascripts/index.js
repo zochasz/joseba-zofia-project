@@ -58,8 +58,9 @@ console.log(new Date(event.datetime.toString()));
 }
 
 function drawMap(list) {
-  myEvents = list.events;
+
   if (list.events) {
+  myEvents = list.events;
     // Create and Initialize Map
     const map = new google.maps.Map(document.getElementById('map'), {
       zoom: 11,
@@ -69,7 +70,7 @@ function drawMap(list) {
               }
     });
 
-    // Add restaurant markers to map
+    // Add users markers to map
     let markers = [];
     list.events.forEach(function(event){
       let title = event.title;
@@ -83,6 +84,8 @@ function drawMap(list) {
     });
   }
   else {
+    myProducers = list.users;
+
     // Create and Initialize Map
     const map = new google.maps.Map(document.getElementById('map'), {
       zoom: 11,
@@ -92,13 +95,13 @@ function drawMap(list) {
               }
     });
 
-    // Add restaurant markers to map
+    // Add users markers to map
     let markers = [];
-    list.users.forEach(function(event){
-      let title = event.title;
+    list.users.forEach(function(user){
+      let title = user.name;
       let position = {
-        lat: event.address.latitude,
-        lng: event.address.longitude
+        lat: user.address.latitude,
+        lng: user.address.longitude
       };
 
       var pin = new google.maps.Marker({ position, map, title  });

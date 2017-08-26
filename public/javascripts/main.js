@@ -2,8 +2,17 @@ $("input[name='radioListMap']").change(function()
 {
     $( "#form-list" ).toggle();
     $( "#form-maps" ).toggle();
+
     initializeGoogleMap();
 
+});
+
+$("input[name='radioOptions']").change(function()
+{
+    $( "#event-listing" ).toggle();
+    $( "#producer-listing" ).toggle();
+
+    initializeGoogleMap();
 });
 
 function initializeGoogleMap(){
@@ -16,10 +25,9 @@ function initializeGoogleMap(){
             lng: -3.703612
             }
   });
-
-  // Add restaurant markers to map
+ if ($("input#radio1").is(":checked")) {
+  // Add events markers to map
   let markers = [];
-  console.log(myEvents);
   myEvents.forEach(function(event){
     let title = event.title;
     let position = {
@@ -27,8 +35,22 @@ function initializeGoogleMap(){
       lng: event.address.longitude
     };
 
-    console.log(position);
     var pin = new google.maps.Marker({ position, map, title  });
     markers.push(pin)
   });
+}
+else {
+ // Add producers markers to map
+ let markers = [];
+ myProducers.forEach(function(user){
+   let title = user.username;
+   let position = {
+     lat: user.address.latitude,
+     lng: user.address.longitude
+   };
+
+   var pin = new google.maps.Marker({ position, map, title  });
+   markers.push(pin)
+ });
+}
 };

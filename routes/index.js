@@ -12,16 +12,23 @@ router.get('/', (req, res, next) => {
        return next(err);
      }
      Event
-     .find({})
-     .populate('products')
-     .sort({datetime: 1})
-     .exec(function (err, events) {
+      .find({})
+      .populate('products')
+      .sort({datetime: 1})
+      .exec(function (err, events) {
        if (err) {
          return next(err);
        }
-       console.log(events)
-       res.render('index', { productTypes, events });
+      User
+       .find({'isProducer' : true})
+       .populate('products')
+       .exec(function (err, users) {
+         if (err) {
+           return next(err);
+         }
+       res.render('index', { productTypes, events, users });
      });
+    });
   });
 });
 
