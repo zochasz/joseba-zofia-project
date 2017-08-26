@@ -108,7 +108,7 @@ router.get('/:id', (req, res, next) => {
       if (err) {
         return next(err);
       }
-      Event.findById(req.params.id, (err, event) => {
+      Event.findById(req.params.id).populate('products').exec((err, event) => {
           if (err) {
             return next(err);
           }

@@ -1,8 +1,8 @@
-<div class="foto"> <img src="/images/huerto1200.jpg"
+<div class="foto"> <img src="/images/<%= user.products[0].image1200 %>"
                         sizes="(max-width: 600px) 600px,
                                 1200px"
-                        srcset="/images/huerto600.jpg 600w,
-                                /images/huerto1200.jpg 1200w"></div>
+                        srcset="/images/<%= user.products[0].image600 %> 600w,
+                                /images/<%= user.products[0].image1200 %> 1200w"></div>
 <% if (isAuthenticated) {%>
 <form class="deleteForm" id="favorite-button" action="/producer/<%=user.id%>/favourites" method="POST">
   <div class="add_button">
@@ -40,7 +40,7 @@
       <span>Description: </span>
       <span name="description"> <%= user.description %></span><br>
       <label>Product Types: </label>
-      <span name="productTypes"> <%= user.products %></span>
+      <span name="productTypes"> <%= user.products[0].name %></span>
     </div>
   </div>
 

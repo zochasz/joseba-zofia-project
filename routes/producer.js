@@ -4,8 +4,7 @@ const TYPES = require('../models/product-types');
 const User = require('../models/user');
 
 router.get('/favourites', (req, res, next) => {
-
-  User.findById(req.user._id).populate('_favourites').exec((err, user) => {
+  User.findById(req.user._id).populate({path:'_favourites',populate:{path:'products'}}).exec((err, user) => {
 
         if (err) {
           return next(err);
@@ -16,13 +15,13 @@ router.get('/favourites', (req, res, next) => {
 
 router.get('/:id', (req, res, next) => {
 
-  User.findById(req.params.id, (err, user) => {
+  User.findById(req.params.id).populate('products').exec((err, user) => {
 
       if (err) {
         return next(err);
       }
       res.render('producer/show', {
-        user, TYPES
+        user
       });
   });
 });
