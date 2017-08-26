@@ -1,0 +1,53 @@
+<div class="foto"> <img src="/images/<%= user.products[0].image1200 %>"
+                        sizes="(max-width: 600px) 600px,
+                                1200px"
+                        srcset="/images/<%= user.products[0].image600 %> 600w,
+                                /images/<%= user.products[0].image1200 %> 1200w"></div>
+<% if (isAuthenticated) {%>
+<form class="deleteForm" id="favorite-button" action="/producer/<%=user.id%>/favourites" method="POST">
+  <div class="add_button">
+    <img src="/images/Facebook-icon.png">
+    <img src="/images/instagram-icon.png">
+    <button type="submit" class="add"> Add to favorites </button>
+  </div>
+</form>
+
+
+<% } %>
+
+<br>
+
+    <div class="eventDescription">
+
+    <div class="form-group showEvent">
+      <span name="name"> <%= user.name %></span><br>
+      <span name="username"> <%= user.username %></span>
+    </div>
+<br>
+    <div class="form-group showEvent">
+      <a href ="https://<%= user.url %>" target="_blank" name="url"> <%= user.url %></a><br>
+      <span name="phoneNo"> <%= user.phoneNo %></span><br>
+      <a href="mailto:<%= user.email %>" name="email" ><%= user.email %>"</a><br><br>
+      <span name="street"> <%= user.address.street %></span>
+      <span name="streetNo"> <%= user.address.streetNo %></span>
+      <span name="city"> <%= user.address.city %></span>
+      <span name="country"> <%= user.address.country %></span>
+    </div>
+<br>
+    <div class="form-group showEvent">
+      <span>Zip Code: </span>
+      <span name="zipCode"> <%= user.address.zipCode %></span><br><br>
+      <span>Description: </span>
+      <span name="description"> <%= user.description %></span><br>
+      <label>Product Types: </label>
+      <span name="productTypes"> <%= user.products[0].name %></span>
+    </div>
+  </div>
+
+
+<div id="form-maps">
+    <div id="map" ></div>
+</div>
+<script type="text/javascript"> var myEvent = <%- JSON.stringify(user) %></script>
+<script src="/javascripts/rating.js" type="text/javascript"></script>
+<script src="/javascripts/show.js" type="text/javascript"></script>

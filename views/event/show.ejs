@@ -1,0 +1,53 @@
+<div class="foto"> <img src="/images/<%= event.products[0].image1200 %>"
+                        sizes="(max-width: 600px) 600px,
+                                1200px"
+                        srcset="/images/<%= event.products[0].image600 %> 600w,
+                                /images/<%= event.products[0].image1200 %> 1200w"></div>
+
+<% if (isAuthenticated) {%>
+<form class="deleteForm" id="calendar-button" action="/event/<%=event.id%>/calendar" method="POST">
+  <div class="add_button">
+    <div class="event-date">
+      <div class="event-month"><%= month %></div>
+      <div class="event-day"><%= day %></div>
+      <div class="event-hour"><%= hour %></div>
+    </div>
+
+    <div>
+      <button type="submit" class="add"> Add to calendar </button>
+    </div>
+  </div>
+</form>
+<% } %>
+
+<br><br>
+<div class="clearfix"></div>
+<br>
+    <div class="eventDescription">
+
+        <div class="form-group showEvent">
+          <span name="name"><strong> <%= event.title %></strong></span><br>
+          <span name="username"> <%= event.description %></span>
+        </div>
+<br>
+          <div class="form-group showEvent">
+            <span name="street"> <%= event.address.street %>  </span>
+            <span name="streetNo"> <%= event.address.streetNo %>, </span>
+            <span name="city"> <%= event.address.city %>, </span>
+            <span name="country"> <%= event.address.country %>, </span>
+          </div>
+<br>
+          <div class="form-group showEvent">
+            <span>Zip Code: </span>
+            <span name="zipCode"> <%= event.address.zipCode %></span><br>
+            <span>Product Types: </span>
+            <span name="productTypes"> <%= event.products[0].name %></span>
+          </div>
+
+    </div>
+
+<div id="form-maps">
+    <div id="map" ></div>
+</div>
+<script type="text/javascript"> var myEvent = <%- JSON.stringify(event) %></script>
+<script src="/javascripts/show.js" type="text/javascript"></script>
