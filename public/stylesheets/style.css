@@ -311,6 +311,10 @@ input[type=radio]:checked + label {
   height: 100%;
   display: block;
 }
+.event-link img {
+  width: 100%;
+  padding-bottom: 15px;
+}
 .eventDescription {
   float: none;
   /*background-color: green;*/

@@ -32,9 +32,11 @@
         <div id="form-list">
           <div class="event-listing">
             <% events.forEach((event) => { %>
+<% console.log(event.datetime);  %>
+<% console.log(event.datetime.toString());  %>
               <div class="event-box">
-                <img src="/images/<%= event.products[0].image600 %>" alt="Product Image">
                 <a class="event-link" href="/event/<%= event._id %>">
+                  <img src="/images/<%= event.products[0].image600 %>" alt="Product Image">
                   <div class="event-date">
                     <p class="date"><%= event.datetime.toString().substring(4, 11) %> </p>
                     <p class="hour"><%= event.datetime.toString().substring(15, 21) %> h.</p>

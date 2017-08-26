@@ -19,6 +19,7 @@ router.get('/', (req, res, next) => {
        if (err) {
          return next(err);
        }
+       console.log(events)
        res.render('index', { productTypes, events });
      });
   });
@@ -32,7 +33,7 @@ router.get('/search', (req, res, next) => {
   console.log(product_types, where_find);
 
   if (where_find === "option1"){
-    Event.find({ products: product_types }, (err, events) => {
+    Event.find({ products: product_types }).populate('products').sort({datetime: 1}).exec(function (err, events) {
        if (err) {
          return next(err);
        }
@@ -41,7 +42,7 @@ router.get('/search', (req, res, next) => {
     });
   }
   else if (where_find === "option2"){
-    User.find({ products: product_types }, (err, users) => {
+    User.find({ products: product_types }).populate('products').exec(function (err, users) {
        if (err) {
          return next(err);
        }
