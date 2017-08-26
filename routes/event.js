@@ -83,7 +83,7 @@ router.post('/new', ensureLoggedIn('/'), (req, res, next) => {
   });
 });
 
-router.get('/createdEvents', (req, res, next) => {
+router.get('/createdEvents', ensureLoggedIn('/'), (req, res, next) => {
 
   Event.find({ _creator: req.user._id }).populate('products').exec((err, events) => {
         if (err) {
@@ -93,7 +93,7 @@ router.get('/createdEvents', (req, res, next) => {
   });
 });
 
-router.get('/calendar', (req, res, next) => {
+router.get('/calendar', ensureLoggedIn('/'), (req, res, next) => {
 
   User.findById(req.user._id).populate({path:'_events',populate:{path:'products'}}).exec((err, user) => {
         if (err) {
@@ -123,7 +123,7 @@ router.get('/:id', (req, res, next) => {
   });
 });
 
-router.get('/:id/edit', (req, res, next) => {
+router.get('/:id/edit', ensureLoggedIn('/'), (req, res, next) => {
  ProductTypes.find({}, (err, productTypes) => {
   if (err) {
     return next(err);
@@ -204,7 +204,7 @@ router.post('/:id', ensureLoggedIn('/'), (req, res, next) => {
   });
 });
 
-router.post("/:id/calendar", (req, res, next) => {
+router.post("/:id/calendar", ensureLoggedIn('/'), (req, res, next) => {
 
   const eventId = req.params.id;
   const userId = req.user._id;
@@ -217,7 +217,7 @@ router.post("/:id/calendar", (req, res, next) => {
   });
 });
 
-router.post("/:id/delete", (req, res, next) => {
+router.post("/:id/delete", ensureLoggedIn('/'), (req, res, next) => {
 
   const eventId = req.params.id;
   const userId = req.user._id;
