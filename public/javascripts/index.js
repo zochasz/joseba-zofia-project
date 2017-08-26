@@ -58,6 +58,7 @@ console.log(new Date(event.datetime.toString()));
 }
 
 function drawMap(list) {
+  myEvents = list.events;
   if (list.events) {
     // Create and Initialize Map
     const map = new google.maps.Map(document.getElementById('map'), {

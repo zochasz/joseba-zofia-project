@@ -115,7 +115,7 @@ router.get('/:id', (req, res, next) => {
       const day = moment(event.datetime).format('D');
       const hour = moment(event.datetime).format('H:mm');
       res.render('event/show', {
-        event, TYPES, month, dayWeek, day, hour
+        event, month, dayWeek, day, hour
       });
   });
 });

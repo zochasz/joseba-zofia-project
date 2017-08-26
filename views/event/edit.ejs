@@ -1,19 +1,22 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-6 centered-form">
+    <div class="signup">
+      <h3> EDIT EVENT </h3>
+      <br>
+
       <form action="/event/<%=event._id%>" method="post">
         <div class="form-group">
           <label for="title">Title</label>
-          <input type="text" name="title" class="form-control" value="<%= event.title %>">
+          <input type="text" name="title" class="form-control productTypes" value="<%= event.title %>">
         </div>
         <div class="form-group">
           <label for="description">Description</label>
-          <input type="text" name="description" class="form-control" value="<%= event.description %>">
+          <input type="text" name="description" class="form-control productTypes" value="<%= event.description %>">
         </div>
         <div class="form-group">
             <label for="datetimepicker">Date and Time</label>
-            <div class='input-group date' id='datetimepicker'>
-                <input type='text' class="form-control" name="datetimepicker" />
+            <div class='input-group dateInput' id='datetimepicker'>
+                <input type='text' class="form-control productTypes" name="datetimepicker" />
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
@@ -29,7 +32,7 @@
         </script>
         <div class="form-group">
           <label for="street">Street</label>
-          <input type="text" name="street" class="form-control" value="<%= event.address.street %>">
+          <input type="text" name="street" class="form-control productTypes" value="<%= event.address.street %>">
         </div>
         <div class="form-group">
           <label for="streetNo">Street Number</label>
@@ -37,15 +40,15 @@
         </div>
         <div class="form-group">
           <label for="zipCode">Zip Code</label>
-          <input type="text" name="zipCode" class="form-control" value="<%= event.address.zipCode %>">
+          <input type="text" name="zipCode" class="form-control productTypes" value="<%= event.address.zipCode %>">
         </div>
         <div class="form-group">
           <label for="city">City</label>
-          <input type="text" name="city" class="form-control" value="<%= event.address.city %>">
+          <input type="text" name="city" class="form-control productTypes" value="<%= event.address.city %>">
         </div>
         <div class="form-group">
           <label for="country">Country</label>
-          <input type="text" name="country" class="form-control" value="<%= event.address.country %>">
+          <input type="text" name="country" class="form-control productTypes" value="<%= event.address.country %>">
         </div>
         <div class="form-group">
             <label>Product Types</label>
