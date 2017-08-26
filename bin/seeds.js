@@ -5,8 +5,9 @@ const bcryptSalt     = 10;
 const User = require('../models/user');
 const Event = require('../models/event');
 const ProductType = require('../models/product-types');
+require("dotenv").config();
 
-mongoose.connect("mongodb://localhost/tomatoop-dev");
+mongoose.connect("mongodb://heroku_r8vnxlll:507q7jqlcjfbfs5mtrbqt274s@ds159953.mlab.com:59953/heroku_r8vnxlll");
 var salt = bcrypt.genSaltSync(bcryptSalt);
 const password = "ironhack";
 var encryptedPass = bcrypt.hashSync(password, salt);
@@ -99,7 +100,7 @@ var encryptedPass = bcrypt.hashSync(password, salt);
 //     description: 'Verduras ecologicas, frescas y de temporada.',
 //     url: 'www.verduras_lopez.com',
 //     phoneNo: '666 44 55 66',
-//     products: [ "59a13fcbac19431ac0cc313c" ]
+//     products: [ "59a17b0189353441bc3c2336" ]
 //   },
 //   {
 //     username: 'Granja La Colina',
@@ -119,7 +120,7 @@ var encryptedPass = bcrypt.hashSync(password, salt);
 //     description: 'Huevos de gallinas criadas en libertad.',
 //     url: 'www.granjalacolina.com',
 //     phoneNo: '666 11 22 33',
-//     products: [ "59a13fcbac19431ac0cc313d" ]
+//     products: [ "59a17b0189353441bc3c2338" ]
 //   },
 //   {
 //     username: 'Colmena Romero',
@@ -139,12 +140,12 @@ var encryptedPass = bcrypt.hashSync(password, salt);
 //     description: 'Miel de romero.',
 //     url: 'www.colmena-romero.com',
 //     phoneNo: '666 32 43 54',
-//     products: [ "59a13fcbac19431ac0cc313e" ]
+//     products: [ "59a17b0189353441bc3c2337" ]
 //   }
 // ];
 const events = [
     {
-    _creator      : "59a140933e67550878229f83",
+    _creator      : "59a17c9b2da2eb487c7ba224",
     title         : 'Venta de Miel de Romero',
     description   : 'Oferta: tarro de 05L - 3euros, si te llevas 2 - 5euros',
     address       : {
@@ -157,10 +158,10 @@ const events = [
                     longitude: -3.6557812
                   },
     datetime      : new Date("2017-09-05T12:30:00.000"),
-    products      : [ "59a13fcbac19431ac0cc313c" ]
+    products      : [ "59a17b0189353441bc3c2336" ]
     },
     {
-    _creator      : "59a140933e67550878229f84",
+    _creator      : "59a17c9b2da2eb487c7ba225",
     title         : 'Venta de Huevos de la Colina',
     description   : '6 huevos blancos XL - 3,5euros, 6 huevos morenos XL - 3,2euros',
     address       : {
@@ -173,10 +174,10 @@ const events = [
                     longitude: -3.7023373
                   },
     datetime      : new Date("2017-09-07T11:30:00.000"),
-    products      : [ "59a13fcbac19431ac0cc313d" ]
+    products      : [ "59a17b0189353441bc3c2338" ]
     },
     {
-    _creator      : "59a140933e67550878229f85",
+    _creator      : "59a17c9b2da2eb487c7ba226",
     title         : 'Vendo verdirita fresca, fresca de mi huerta',
     description   : 'Tengo tomates rambo, acelga fresca, zanahorias riquisimas, puerros, cebollas, calabacines y ajos',
     address       : {
@@ -189,7 +190,7 @@ const events = [
                     longitude: -3.6956848
                   },
     datetime      : new Date("2017-09-08T20:30:00.000"),
-    products      : [ "59a13fcbac19431ac0cc313e" ]
+    products      : [ "59a17b0189353441bc3c2337" ]
   }];
 
 // ProductType.create(productTypes, (err, docs)=>{
