@@ -2,7 +2,7 @@
 <div class="event-listing">
   <% events.forEach((event) => { %>
     <div class="event-box">
-      <a class="event-link" href="/event/<%= event._id %>">
+      <a class="event-link" href="/event/<%= event._id %>/edit">
         <img src="/images/<%= event.products[0].image600 %>" alt="Product Image">
         <div class="event-date">
           <p class="date"><%= event.datetime.toString().substring(4, 11) %> </p>
