@@ -17,7 +17,7 @@ const googleMapsClient  = require('@google/maps').createClient({
   key: process.env.GOOGLE_APIKEY
 });
 
-mongoose.connect("mongodb://localhost/tomatoop-dev");
+mongoose.connect(process.env.MONGODB_URI);
 
 const User = require('./models/user');
 const Event = require('./models/event');
