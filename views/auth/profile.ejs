@@ -65,14 +65,12 @@
           </div>
           <div class="form-group">
             <label>Product Types</label>
-              <% let i = 0; %>
-              <% TYPES.forEach((type) => { %>
-              <% i++ %>
+              <% productTypes.forEach((type) => { %>
                 <div class="checkbox">
-                  <% if (user.products.indexOf(type) !== -1) { %>
-                        <label><input type="checkbox" name="productType<%= i %>" id="productType<%= i %>" checked><%= type %></label>
+                  <% if (user.products.indexOf(type._id) !== -1) { %>
+                        <label><input type="checkbox" name="<%= type._id %>" id="<%= type._id %>" checked><%= type.name %></label>
                   <% } else { %>
-                       <label><input type="checkbox" name="productType<%= i %>" id="productType<%= i %>"><%= type %></label>
+                       <label><input type="checkbox" name="<%= type._id %>" id="<%= type._id %>"><%= type.name %></label>
                   <% } %>
                 </div>
               <% }) %>

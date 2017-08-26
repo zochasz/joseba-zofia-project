@@ -21,6 +21,7 @@ mongoose.connect("mongodb://localhost/tomatoop-dev");
 
 const User = require('./models/user');
 const Event = require('./models/event');
+const ProductTypes = require('./models/product-types');
 
 const eventRoutes = require('./routes/event.js');
 const indexRoutes = require('./routes/index.js');
@@ -74,6 +75,10 @@ passport.use('local-signup', new LocalStrategy({
   },
   (req, username, password, next) => {
     process.nextTick(() => {
+     ProductTypes.find({}, (err, productTypes) => {
+      if (err) {
+        return next(err);
+      }
       User.findOne({
         'username': username
       }, (err, user) => {
@@ -103,39 +108,12 @@ passport.use('local-signup', new LocalStrategy({
 
           if (isProducer) {
             let products = [];
-            if (req.body.productType1) {
-              products.push("Fruit and Vegetables")
-            };
-            if (req.body.productType2) {
-              products.push("Eggs")
-            };
-            if (req.body.productType3) {
-              products.push("Milk and Cheese")
-            };
-            if (req.body.productType4) {
-              products.push("Bread, Cereals and Bakery")
-            };
-            if (req.body.productType5) {
-              products.push("Oil and Vinegar")
-            }
-            if (req.body.productType6) {
-              products.push("Beer, Vine and Spirits")
-            };
-            if (req.body.productType7) {
-              products.push("Meat")
-            };
-            if (req.body.productType8) {
-              products.push("Cold Meat")
-            };
-            if (req.body.productType9) {
-              products.push("Jams and Honey")
-            };
-            if (req.body.productType10) {
-              products.push("Appetizers")
-            };
-            if (req.body.productType11) {
-              products.push("Tinned Food")
-            };
+            const reqBodyKeys = Object.keys(req.body);
+            productTypes.forEach((type) => {
+               if (reqBodyKeys.indexOf(type._id.toString()) !== -1) {
+                 products.push(type._id);
+               }
+            });
 
             const calculatedAddress = street + " " + streetNo + " " + zipCode + " " + city + " " + country;
 
@@ -192,6 +170,7 @@ passport.use('local-signup', new LocalStrategy({
         }
       });
     });
+  });
 }));
 
 passport.use('local-login', new LocalStrategy((username, password, next) => {

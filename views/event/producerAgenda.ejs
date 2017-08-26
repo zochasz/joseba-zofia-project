@@ -4,7 +4,7 @@
     <div class="event-box">
       <a class="event-link" href="/event/<%= event._id %>/edit">
         <p> <strong><%= event.title %> </strong></p>
-        <p> Product type: <%= event.products %> </p>
+        <p> Product type: <%= event.products[0].name %> </p>
       </a>
     </div>
   <%  }) %>

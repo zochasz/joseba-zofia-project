@@ -50,11 +50,9 @@
         </div>
         <div class="form-group">
             <label>Product Types</label>
-              <% let i = 0; %>
-              <% TYPES.forEach((type, i) => { %>
-              <% i++ %>
+              <% productTypes.forEach((type) => { %>
                 <div class="checkbox">
-                  <label><input type="checkbox" name="productType<%= i %>" id="productType<%= i %>"><%= type %></label>
+                  <label><input type="checkbox" name="<%= type._id %>" id="<%= type._id %>"><%= type.name %></label>
                 </div>
               <% }) %>
         </div>
